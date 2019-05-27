@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { View } from 'react-native';
+import { Text } from 'react-native';
 import styled from 'styled-components';
 
 import ActionsGroup from './ActionsGroup';
@@ -24,6 +24,9 @@ const Landing = () => {
                 <StyledSlogan>{staticText.slogan.toUpperCase()}</StyledSlogan>
             </StyledView>
             <ActionsGroup />
+            <StyledAbout>
+                <Text style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Om denne applikasjonen</Text>
+            </StyledAbout>
         </Fragment>
     )
 }
@@ -58,7 +61,7 @@ const StyledMainHeading = styled.Text`
 `;
 
 const StyledSlogan = styled.Text`
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     font-weight: 100;
     text-transform: uppercase;
@@ -72,4 +75,12 @@ const StyledBorder = styled.View`
     min-height: 3px;
     background-color: #ffffff;
     margin: 15px auto;
+`;
+
+const StyledAbout = styled.View`
+    position: absolute;
+    bottom: 25px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 `;

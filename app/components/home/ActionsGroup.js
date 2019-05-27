@@ -9,13 +9,16 @@ const ActionsGroup = () => {
     // Find closest, search and see map
     const actions = [
         {
-            text: 'NÆRMEST MEG'
+            text: 'NÆRMEST MEG',
+            icon: 'md-pin'
         },
         {
-            text: 'SØK'
+            text: 'SØK',
+            icon: 'md-search'
         },
         {
-            text: 'NORGESKART'
+            text: 'NORGESKART',
+            icon: 'md-map'
         }
     ];
 
