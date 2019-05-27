@@ -4762,6 +4762,11 @@ react-native-gesture-handler@~1.0.14:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-global-props@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-global-props/-/react-native-global-props-1.1.5.tgz#443e0ffc89d5402fa20ebedf37bcbca6d861c34d"
+  integrity sha512-QDeAdRel6zyJfbgyFxZi9QXZe78OdlANxJae0rJn76uTqdt/A+iWBVjJy3NmaN/fpKy0uV0HhW6Hu4xM0QCisQ==
+
 react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"

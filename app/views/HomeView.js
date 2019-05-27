@@ -1,16 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import styled from 'styled-components';
+import Landing from '../components/home/Landing';
 
 const HomeView = () => {
-
     const cover = require('../assets/cover.jpg');
 
     return (
         <StyledImage source={cover}>
-            <Text>
-                Home
-            </Text>
+            <Landing />
             <StyledOverlay />
         </StyledImage>
     )
@@ -25,7 +23,7 @@ const StyledOverlay = styled.View`
     bottom: 0;
     left: 0;
     background-color: #000000;
-    opacity: 0.7;
+    opacity: 0.1;
 `;
 
 const StyledImage = styled.ImageBackground`
