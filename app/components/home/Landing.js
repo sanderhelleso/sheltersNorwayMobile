@@ -1,6 +1,9 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { Fragment } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components';
+
+import ActionsGroup from './ActionsGroup';
+
 
 const Landing = () => {
 
@@ -12,13 +15,16 @@ const Landing = () => {
     }
 
     return (
-        <StyledView>
-            <StyledSubHeading>{staticText.subHeading1.toUpperCase()}</StyledSubHeading>
-            <StyledSubHeading>{staticText.subHeading2.toUpperCase()}</StyledSubHeading>
-            <StyledMainHeading>{staticText.mainHeading.toUpperCase()}</StyledMainHeading>
-            <StyledBorder />
-            <StyledSlogan>{staticText.slogan.toUpperCase()}</StyledSlogan>
-        </StyledView>
+        <Fragment>
+            <StyledView>
+                <StyledSubHeading>{staticText.subHeading1.toUpperCase()}</StyledSubHeading>
+                <StyledSubHeading>{staticText.subHeading2.toUpperCase()}</StyledSubHeading>
+                <StyledMainHeading>{staticText.mainHeading.toUpperCase()}</StyledMainHeading>
+                <StyledBorder />
+                <StyledSlogan>{staticText.slogan.toUpperCase()}</StyledSlogan>
+            </StyledView>
+            <ActionsGroup />
+        </Fragment>
     )
 }
 
@@ -26,7 +32,7 @@ export default Landing;
 
 const StyledView = styled.View`
     position: absolute;
-    top: 15%;
+    top: 17.5%;
     left: 0;
     right: 0;
     justify-content: center;

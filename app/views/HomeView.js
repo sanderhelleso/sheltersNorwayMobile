@@ -1,31 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
-import styled from 'styled-components';
+import { Dimensions } from 'react-native'
 import Landing from '../components/home/Landing';
+import ImageOverlay from "react-native-image-overlay";
 
 const HomeView = () => {
     const cover = require('../assets/cover.jpg');
 
     return (
-        <StyledImage source={cover}>
+        <ImageOverlay 
+            source={cover} 
+            height={Dimensions.get('window').height} 
+            contentPosition="top"
+            overlayAlpha={0.7}
+        >
             <Landing />
-            <StyledOverlay />
-        </StyledImage>
+        </ImageOverlay>
     )
 }
 
 export default HomeView;
-
-const StyledOverlay = styled.View`
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #000000;
-    opacity: 0.1;
-`;
-
-const StyledImage = styled.ImageBackground`
-    flex: 1
-`;
