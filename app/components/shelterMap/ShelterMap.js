@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
-const ShelterMap = () => {
+import { _getShelters } from '../../api/shelter';
 
-    return (
-        <MapView
-            style={styles.container}
-            initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }}
-        />
-    )
+class ShelterMap extends Component {
+    defaultCoords = {
+        latitude: 63.446827,
+        longitude: 10.421906,
+        latitudeDelta: 10,
+        longitudeDelta: 10
+    }
+
+    // load shelters on load
+    componentDidMount() {
+        this.getShelters();
+    }
+
+    async getShelters() {
+        await _getShelters();
+    }
+
+    render() {
+        return (
+            <MapView
+                style={styles.container}
+                initialRegion={this.defaultCoords}
+            />
+        )
+    }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
