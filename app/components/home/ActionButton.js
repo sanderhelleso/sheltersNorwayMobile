@@ -3,10 +3,10 @@ import { TouchableOpacity, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styled from 'styled-components';
 
-const ActionButton = ({ text, icon }) => {
+const ActionButton = ({ text, icon, onPress }) => {
 
     return (
-        <TouchableOpacity style={{ height: 100 }}>
+        <TouchableOpacity style={{ height: 100 }} onPress={onPress}>
             <StyledIconCont>
                 <Ionicons 
                     name={icon} 
