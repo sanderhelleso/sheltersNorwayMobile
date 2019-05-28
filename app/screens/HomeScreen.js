@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 import Landing from '../components/home/Landing';
 import ImageOverlay from "react-native-image-overlay";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
     const cover = require('../assets/cover.jpg');
 
     return (
@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
             contentPosition="top"
             overlayAlpha={0.7}
         >
-            <Landing navigation={navigation} />
+            <Landing />
         </ImageOverlay>
     )
 }

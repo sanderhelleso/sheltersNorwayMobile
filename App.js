@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import navigationService from './app/navigationService';
 
 import HomeScreen from './app/screens/HomeScreen';
 import ShelterMapScreen from './app/screens/ShelterMapScreen'
@@ -8,7 +8,7 @@ import ShelterMapScreen from './app/screens/ShelterMapScreen'
 import globalStyles from './app/globalStyles';
 globalStyles();
 
-const AppNavigator = createStackNavigator({
+const TopLevelNavigator = createStackNavigator({
 	Home: { 
 		screen: HomeScreen,
 		navigationOptions: {
@@ -36,4 +36,16 @@ const AppNavigator = createStackNavigator({
 	}
 });
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(TopLevelNavigator);
+
+const App = () => {
+	return (
+		<AppContainer
+			ref={navigatorRef => {
+				navigationService.setTopLevelNavigator(navigatorRef);
+			}}
+      	/>
+	)
+}
+
+export default App;

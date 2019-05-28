@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ActionsGroup from './ActionsGroup';
 
 
-const Landing = ({ navigation }) => {
+const Landing = () => {
 
     const staticText = {
         subHeading1: 'Offentlige',
@@ -23,7 +23,7 @@ const Landing = ({ navigation }) => {
                 <StyledBorder />
                 <StyledSlogan>{staticText.slogan.toUpperCase()}</StyledSlogan>
             </StyledView>
-            <ActionsGroup navigation={navigation} />
+            <ActionsGroup />
             <StyledAbout>
                 <Text style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Om denne applikasjonen</Text>
             </StyledAbout>
