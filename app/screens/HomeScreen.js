@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 import Landing from '../components/home/Landing';
 import ImageOverlay from "react-native-image-overlay";
 
-const HomeView = () => {
+const HomeScreen = () => {
     const cover = require('../assets/cover.jpg');
 
     return (
@@ -18,4 +18,4 @@ const HomeView = () => {
     )
 }
 
-export default HomeView;
+export default HomeScreen;

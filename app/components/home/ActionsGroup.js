@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import ActionButton from './ActionButton';
 
+import navigationService from '../../navigationService.js';
+
 const ActionsGroup = () => {
 
     // list of available actions presented to user
@@ -18,7 +20,8 @@ const ActionsGroup = () => {
         },
         {
             text: 'NORGESKART',
-            icon: 'md-map'
+            icon: 'md-map',
+            onPress: () => navigationService.navigate('ShelterMap', {})
         }
     ];
 

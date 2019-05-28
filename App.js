@@ -1,15 +1,51 @@
 import React from 'react';
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import navigationService from './app/navigationService';
 
-import HomeView from './app/views/HomeView';
+import HomeScreen from './app/screens/HomeScreen';
+import ShelterMapScreen from './app/screens/ShelterMapScreen'
+
 import globalStyles from './app/globalStyles';
 globalStyles();
 
-const App = () => {
+const TopLevelNavigator = createStackNavigator({
+	Home: { 
+		screen: HomeScreen,
+		navigationOptions: {
+			header: null,
+		}
+	},
+	ShelterMap: { 
+		screen: ShelterMapScreen,
+		navigationOptions: {
+			title: 'NORGESKART'
+		}
+	},
+}, {
+	defaultNavigationOptions: {
+		headerTintColor: '#ffffff',
+		headerStyle: {
+			backgroundColor: '#f50057',
+		},
+		headerTitleStyle: {
+			color: '#ffffff',
+			letterSpacing: 1,
+			textAlign: 'right', 
+			flex: 1 
+		}, 
+	}
+});
 
-    return (
-		<HomeView />
-    );
+const AppContainer = createAppContainer(TopLevelNavigator);
+
+const App = () => {
+	return (
+		<AppContainer
+			ref={navigatorRef => {
+				navigationService.setTopLevelNavigator(navigatorRef);
+			}}
+      	/>
+	)
 }
 
 export default App;
-
