@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import ActionButton from './ActionButton';
 
-import { goShelterMap } from '../../navigation';
-
 const ActionsGroup = () => {
 
     // list of available actions presented to user
@@ -20,8 +18,7 @@ const ActionsGroup = () => {
         },
         {
             text: 'NORGESKART',
-            icon: 'md-map',
-            onPress: () => goShelterMap()
+            icon: 'md-map'
         }
     ];
 
