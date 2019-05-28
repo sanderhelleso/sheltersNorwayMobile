@@ -1,11 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
+import ShelterMap from '../components/shelterMap/ShelterMap';
 
 const ShelterMapScreen = () => {
-
-    return (
-        <Text>Screen</Text>
-    )
+    return <ShelterMap />
 }
 
 export default ShelterMapScreen;
