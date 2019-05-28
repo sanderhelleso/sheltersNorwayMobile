@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ActionButton from './ActionButton';
 
-const ActionsGroup = () => {
+const ActionsGroup = ({ navigation }) => {
 
     // list of available actions presented to user
     // Find closest, search and see map
@@ -18,7 +18,8 @@ const ActionsGroup = () => {
         },
         {
             text: 'NORGESKART',
-            icon: 'md-map'
+            icon: 'md-map',
+            onPress: () => navigation.navigate('ShelterMap')
         }
     ];
 

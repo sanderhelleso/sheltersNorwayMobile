@@ -1,15 +1,15 @@
 import React from 'react';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import HomeView from './app/views/HomeView';
+import HomeScreen from './app/screens/HomeScreen';
+import ShelterMapScreen from './app/screens/ShelterMapScreen'
+
 import globalStyles from './app/globalStyles';
 globalStyles();
 
-const App = () => {
+const AppNavigator = createStackNavigator({
+	Home: { screen: HomeScreen },
+	ShelterMap: { screen: ShelterMapScreen }
+});
 
-    return (
-		<HomeView />
-    );
-}
-
-export default App;
-
+export default createAppContainer(AppNavigator);
