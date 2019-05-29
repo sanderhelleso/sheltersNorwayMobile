@@ -12,11 +12,13 @@ const ActionsGroup = () => {
     const actions = [
         {
             text: 'NÆRMEST MEG',
-            icon: 'md-pin'
+            icon: 'md-pin',
+            onPress: () => navigationService.navigate('ClosestShelter', {})
         },
         {
             text: 'SØK',
-            icon: 'md-search'
+            icon: 'md-search',
+            onPress: () => navigationService.navigate('Search', {})
         },
         {
             text: 'NORGESKART',
