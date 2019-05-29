@@ -16,6 +16,7 @@ class SearchField extends Component {
 		return (
 			<StyledView>
 				<StyledInput
+					style={bottomBorder}
 					selectionColor={'#f50057'}
 					onChangeText={this.handleChangeText}
 					value={this.state.keywords}
@@ -31,16 +32,19 @@ class SearchField extends Component {
 export default SearchField;
 
 const StyledView = styled.View`
-	width: 75%;
+	width: 80%;
 	border-width: 0;
 `;
 
 const StyledInput = styled.TextInput`
-	border: 1.5px solid #f50057;
-	min-height: 60;
-	padding: 0 10px;
-	font-size: 18px;
-	border-radius: 4px;
-	background-color: rgba(0, 0, 0, 0.5);
-	color: #ffffff;
+	min-height: 60px;
+	font-size: 20px;
+	color: #f50057;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 `;
+
+const bottomBorder = {
+	borderBottomWidth: 3,
+	borderBottomColor: '#f50057'
+};

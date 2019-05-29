@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Platform } from 'react-native';
 
 import ActionButton from './ActionButton';
 
@@ -8,20 +9,23 @@ import navigationService from '../../navigationService.js';
 const ActionsGroup = () => {
 	// list of available actions presented to user
 	// Find closest, search and see map
+
+	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
+
 	const actions = [
 		{
 			text: 'NÆRMEST MEG',
-			icon: 'md-pin',
+			icon: `${iconPrefix}-pin`,
 			onPress: () => navigationService.navigate('ClosestShelter', {})
 		},
 		{
 			text: 'SØK',
-			icon: 'md-search',
+			icon: `${iconPrefix}-search`,
 			onPress: () => navigationService.navigate('Search', {})
 		},
 		{
 			text: 'NORGESKART',
-			icon: 'md-map',
+			icon: `${iconPrefix}-map`,
 			onPress: () => navigationService.navigate('ShelterMap', {})
 		}
 	];

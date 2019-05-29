@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import SearchField from './SearchField';
 import SearchBtn from './SearchBtn';
-import SearchArt from './SearchArt';
 
 class Search extends Component {
 	render() {
@@ -28,7 +27,6 @@ const StyledView = styled.View`
 const StyledSeperator = styled.View`
 	min-height: 85px;
 	min-width: 1.5px;
-	background-color: #ffffff;
-	opacity: 0.3;
-	margin: 50px auto;
+	background-color: #eeeeee;
+	margin: 25px auto;
 `;
