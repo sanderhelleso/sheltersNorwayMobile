@@ -1,25 +1,29 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "expo": "^32.0.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-color-matrix-image-filters": "^5.1.5",
-    "react-native-global-props": "^1.1.5",
-    "react-native-image-overlay": "^0.1.2",
-    "react-native-maps": "^0.24.2",
-    "react-navigation": "^3.11.0",
-    "styled-components": "^4.2.0"
-  },
-  "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
-  },
-  "private": true
+	"main": "node_modules/expo/AppEntry.js",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"eject": "expo eject"
+	},
+	"dependencies": {
+		"axios": "^0.18.0",
+		"expo": "^32.0.0",
+		"react": "16.5.0",
+		"react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+		"react-native-color-matrix-image-filters": "^5.1.5",
+		"react-native-global-props": "^1.1.5",
+		"react-native-image-overlay": "^0.1.2",
+		"react-native-maps": "^0.24.2",
+		"react-navigation": "^3.11.0",
+		"react-redux": "^7.0.3",
+		"redux": "^4.0.1",
+		"remote-redux-devtools-sp": "^0.5.13",
+		"save": "^2.4.0",
+		"styled-components": "^4.2.0"
+	},
+	"devDependencies": {
+		"babel-preset-expo": "^5.0.0"
+	},
+	"private": true
 }
