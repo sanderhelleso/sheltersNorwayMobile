@@ -7,11 +7,10 @@ import ActionButton from './ActionButton';
 import navigationService from '../../navigationService.js';
 
 const ActionsGroup = () => {
-	// list of available actions presented to user
-	// Find closest, search and see map
-
 	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
 
+	// list of available actions presented to user
+	// Find closest, search and see map
 	const actions = [
 		{
 			text: 'NÆRMEST MEG',

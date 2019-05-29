@@ -32,7 +32,7 @@ class SearchField extends Component {
 export default SearchField;
 
 const StyledView = styled.View`
-	width: 80%;
+	min-width: 75%;
 	border-width: 0;
 `;
 

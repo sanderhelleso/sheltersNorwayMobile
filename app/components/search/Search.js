@@ -3,14 +3,18 @@ import styled from 'styled-components';
 
 import SearchField from './SearchField';
 import SearchBtn from './SearchBtn';
+import SearchHistory from './SearchHistory';
 
 class Search extends Component {
 	render() {
 		return (
 			<StyledView>
-				<SearchField />
-				<StyledSeperator />
-				<SearchBtn />
+				<SearchHistory />
+				<StyledSearchCont>
+					<SearchField />
+					<StyledSeperator />
+					<SearchBtn />
+				</StyledSearchCont>
 			</StyledView>
 		);
 	}
@@ -24,8 +28,10 @@ const StyledView = styled.View`
 	align-items: center;
 `;
 
+const StyledSearchCont = styled.View`flex: 3;`;
+
 const StyledSeperator = styled.View`
-	min-height: 85px;
+	min-height: 100px;
 	min-width: 1.5px;
 	background-color: #eeeeee;
 	margin: 25px auto;

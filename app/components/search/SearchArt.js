@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const source = require('../../assets/search2.png');
+
 const SearchArt = () => {
-	return <StyledSearchArt />;
+	return <StyledImage source={source} />;
 };
 
 export default SearchArt;
 
-const StyledSearchArt = styled.View`
-	min-width: 150px;
-	min-height: 150px;
-	background-color: red;
-	margin-bottom: 80px;
-	border-radius: 150;
+const StyledImage = styled.Image`
+	height: 140px;
+	width: 140px;
 `;

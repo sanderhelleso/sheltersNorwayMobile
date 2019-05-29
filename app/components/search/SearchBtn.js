@@ -24,7 +24,6 @@ class SearchBtn extends Component {
 export default SearchBtn;
 
 const StyledButton = styled.TouchableOpacity`
-	min-width: 60%;
 	min-height: 55px;
 	justify-content: center;
 	align-items: center;
