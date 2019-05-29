@@ -1,11 +1,10 @@
 import { ADD_SEARCH_TO_HISTORY } from '../actions/actionTypes';
 
-// initial state of the application
 const initState = {
 	searchHistory: []
 };
 
-const appReducer = (state = initState, action) => {
+const searchReducer = (state = initState, action) => {
 	switch (action.type) {
 		case ADD_SEARCH_TO_HISTORY: {
 			return {
@@ -19,4 +18,4 @@ const appReducer = (state = initState, action) => {
 	}
 };
 
-export default appReducer;
+export default searchReducer;

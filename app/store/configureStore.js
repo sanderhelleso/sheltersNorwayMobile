@@ -1,12 +1,15 @@
 import { createStore, combineReducers } from 'redux';
-import devTools from 'remote-redux-devtools-sp';
 
-import appReducer from './reducers/appReducer';
+import sheltersReducer from './reducers/sheltersReducer';
+import searchReducer from './reducers/searchReducer';
+import locationReducer from './reducers/locationReducer';
 
 const rootReducer = combineReducers({
-	app: appReducer
+	shelters: sheltersReducer,
+	searchReducer: searchReducer,
+	locationReducer: locationReducer
 });
 
-const configureStore = () => createStore(rootReducer, devTools());
+const configureStore = () => createStore(rootReducer);
 
 export default configureStore;

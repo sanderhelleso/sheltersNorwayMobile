@@ -18,12 +18,14 @@
 		"react-navigation": "^3.11.0",
 		"react-redux": "^7.0.3",
 		"redux": "^4.0.1",
+		"remote-redux-devtools": "^0.5.16",
 		"remote-redux-devtools-sp": "^0.5.13",
 		"save": "^2.4.0",
 		"styled-components": "^4.2.0"
 	},
 	"devDependencies": {
-		"babel-preset-expo": "^5.0.0"
+		"babel-preset-expo": "^5.0.0",
+		"remotedev-rn-debugger": "^0.8.3"
 	},
 	"private": true
 }
