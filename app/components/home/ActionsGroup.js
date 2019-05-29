@@ -53,7 +53,7 @@ const StyledBtnCont = styled.View`
 	width: 65%;
 	height: 50px;
 	margin: 15px;
-	border-radius: 2px;
+	border-radius: 4px;
 	border: 1px solid #ffffff;
 	background-color: rgba(20, 20, 20, 0.2);
 `;

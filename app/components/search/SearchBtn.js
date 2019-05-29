@@ -8,7 +8,7 @@ class SearchBtn extends Component {
 		return (
 			<StyledBtnCont>
 				<StyledButton>
-					<Text>Search</Text>
+					<StyledText>SØK</StyledText>
 				</StyledButton>
 			</StyledBtnCont>
 		);
@@ -26,8 +26,12 @@ const StyledButton = styled.TouchableOpacity`
 `;
 
 const StyledBtnCont = styled.View`
-	margin-top: 35px;
-	border-radius: 2px;
+	border-radius: 4px;
 	border: 1px solid #ffffff;
-	background-color: rgba(20, 20, 20, 0.2);
+	background-color: #f50057;
+`;
+
+const StyledText = styled.Text`
+	color: #ffffff;
+	letter-spacing: 1px;
 `;
