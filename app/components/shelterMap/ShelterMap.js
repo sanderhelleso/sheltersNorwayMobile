@@ -14,7 +14,7 @@ class ShelterMap extends Component {
 
     // load shelters on load
     componentDidMount() {
-        this.getShelters();
+        //this.getShelters();
     }
 
     async getShelters() {

@@ -3,6 +3,8 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import navigationService from './app/navigationService';
 
 import HomeScreen from './app/screens/HomeScreen';
+import ClosestShelterScreen from './app/screens/ClosestShelterScreen'
+import SearchScreen from './app/screens/SearchScreen'
 import ShelterMapScreen from './app/screens/ShelterMapScreen'
 
 import globalStyles from './app/globalStyles';
@@ -13,6 +15,18 @@ const TopLevelNavigator = createStackNavigator({
 		screen: HomeScreen,
 		navigationOptions: {
 			header: null,
+		}
+	},
+	ClosestShelter: { 
+		screen: ClosestShelterScreen,
+		navigationOptions: {
+			title: 'NÆRMEST MEG'
+		}
+	},
+	Search: { 
+		screen: SearchScreen,
+		navigationOptions: {
+			title: 'SØK'
 		}
 	},
 	ShelterMap: { 
