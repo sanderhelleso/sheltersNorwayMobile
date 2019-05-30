@@ -4,18 +4,18 @@ import styled from 'styled-components';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateCLientLocationAction } from '../../store/actions/locationActions';
+import { updateCLientLocationAction, setClosestShelterAction } from '../../store/actions/closestActions';
 
 import ClosestShelterLoader from './ClosestShelterLoader';
 
 import didLocationChange from '../../lib/didLocationChange';
+import findClosestShelter from '../../lib/findClosestShelter';
 
 class ClosestShelter extends Component {
 	GEO_LOC_CONFIG = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
 
 	state = {
 		loading: true,
-		loadingStage: 1,
 		error: false
 	};
 
@@ -37,11 +37,15 @@ class ClosestShelter extends Component {
 						timestamp: pos.timestamp
 					});
 
-					this.setState({
-						loading: false
-					});
+					// find closest shelter
+					const closest = findClosestShelter(latitude, longitude, this.props.shelters);
+
+					// update the closest shelter for the user
+					this.props.setClosestShelterAction(closest);
 				}
 
+				// complete loading and display result
+				this.setState({ loading: false });
 				alert(JSON.stringify(pos));
 			},
 			// if an error occured while attemping to fetch location,
@@ -57,20 +61,8 @@ class ClosestShelter extends Component {
 		);
 	}
 
-	setLoadingMessage = () => {
-		if (this.state.loadingStage === 1) {
-			return 'Henter din lokasjon...';
-		}
-
-		return 'Finner ditt nærmeste tilfluktsrom...';
-	};
-
 	render() {
-		return (
-			<StyledView>
-				{<ClosestShelterLoader loading={this.state.loading} message={this.setLoadingMessage()} />}
-			</StyledView>
-		);
+		return <StyledView>{<ClosestShelterLoader loading={this.state.loading} message="Søker..." />}</StyledView>;
 	}
 }
 
@@ -81,7 +73,8 @@ const mapStateToProps = ({ closest, shelters }) => {
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators(
 		{
-			updateCLientLocationAction
+			updateCLientLocationAction,
+			setClosestShelterAction
 		},
 		dispatch
 	);
