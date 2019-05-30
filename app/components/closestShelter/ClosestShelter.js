@@ -1,29 +1,76 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Alert } from 'react-native';
 import styled from 'styled-components';
 
-import { bindActionCreators } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateCLientLocationAction } from '../../store/actions/locationActions';
 
+import ClosestShelterLoader from './ClosestShelterLoader';
+
+import didLocationChange from '../../lib/didLocationChange';
+
 class ClosestShelter extends Component {
+	GEO_LOC_CONFIG = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
+
 	state = {
-		loading: true
+		loading: true,
+		loadingStage: 1,
+		error: false
 	};
 
 	componentDidMount() {
+		console.log(this.props.closest);
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
-				const location = pos;
-				alert(location);
+				// compare current location to previously fetched location,
+				// if a difference is found, update the users current location
+				// and refetch the closest shelter, if not re-use previous closest shelter
+				if (didLocationChange(pos.coords, this.props.closest.coords)) {
+					const { latitude, longitude, accuracy } = pos.coords;
+
+					// update the clients location
+					this.props.updateCLientLocationAction({
+						latitude,
+						longitude,
+						accuracy,
+						timestamp: pos.timestamp
+					});
+
+					this.setState({
+						loading: false
+					});
+				}
+
+				alert(JSON.stringify(pos));
 			},
-			(error) => Alert.alert(error.message),
-			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+			// if an error occured while attemping to fetch location,
+			// display a generic error message and suggest user to re-try
+			(error) => {
+				Alert.alert(error.message);
+				this.setState({
+					loading: false,
+					error: true
+				});
+			},
+			this.GEO_LOC_CONFIG
 		);
 	}
 
+	setLoadingMessage = () => {
+		if (this.state.loadingStage === 1) {
+			return 'Henter din lokasjon...';
+		}
+
+		return 'Finner ditt nærmeste tilfluktsrom...';
+	};
+
 	render() {
-		return <Text>Shelter!!</Text>;
+		return (
+			<StyledView>
+				{<ClosestShelterLoader loading={this.state.loading} message={this.setLoadingMessage()} />}
+			</StyledView>
+		);
 	}
 }
 
@@ -40,8 +87,10 @@ const mapDispatchToProps = (dispatch) => {
 	);
 };
 
-const didLocationChange = ({ currCoords, oldCoords }) => {
-	return currCoords.latitude !== oldCoords.latitude || currCoords.longitude !== oldCoords.longitude;
-};
+const StyledView = styled.View`
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+`;
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClosestShelter);

@@ -1,10 +1,11 @@
+import { UPDATE_CLIENT_LOCATION } from '../actions/actionTypes';
+
 const initState = {
-	clientCoords: {
+	coords: {
 		latitude: null,
 		longitude: null,
-		signal: null,
-		fetched: false,
-		lastFetched: null
+		accuracy: null,
+		timestamp: false
 	},
 
 	shelter: {
@@ -14,6 +15,13 @@ const initState = {
 
 const locationReducer = (state = initState, action) => {
 	switch (action.type) {
+		case UPDATE_CLIENT_LOCATION: {
+			return {
+				...state,
+				coords: action.payload
+			};
+		}
+
 		default:
 			return state;
 	}
