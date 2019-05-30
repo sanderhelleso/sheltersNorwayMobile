@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MapView, { Marker } from 'react-native-maps';
 
 import ShelterInfoBtn from './ShelterInfoBtn';
+import ClosestShelterInfoModal from '../closestShelter/ClosestShelterInfoModal';
 
 class Shelter extends Component {
 	// set default coords for maps initial render point and marker
@@ -22,16 +23,24 @@ class Shelter extends Component {
 		this.setState({ isModalOpen: !this.state.isModalOpen });
 	};
 
+	renderBtn = () => {
+		return (
+			<ShelterInfoBtn
+				icon={this.state.isModalOpen ? 'close' : 'information-circle-outline'}
+				onPress={this.openModal}
+			/>
+		);
+	};
+
 	render() {
+		const btn = this.renderBtn();
 		return (
 			<StyledView>
 				<MapView style={mapStyles} initialRegion={this.defaultCoords}>
 					<Marker coordinate={{ latitude: this.coordinates[1], longitude: this.coordinates[0] }} />
 				</MapView>
-				<ShelterInfoBtn
-					icon={this.state.isModalOpen ? 'close' : 'information-circle-outline'}
-					onPress={this.openModal}
-				/>
+				<ClosestShelterInfoModal visible={this.state.isModalOpen} button={btn} />
+				{!this.state.isModalOpen && btn}
 			</StyledView>
 		);
 	}
