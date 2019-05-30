@@ -9,18 +9,47 @@ import ShelterInfo from './ShelterInfo';
 class Shelter extends Component {
 	// set default coords for maps initial render point and marker
 	coordinates = this.props.shelter.geometry.coordinates;
+
+	// default deltas for markers zoomed in / out state
+	LAT_DELTA_OUT = 0.0422;
+	LAT_DELTA_IN = 0.0025;
+	LNG_DELTA_OUT = 0.0221;
+	LNG_DELTA_IN = 0.0001;
+
 	defaultCoords = {
 		latitude: this.coordinates[1],
 		longitude: this.coordinates[0],
-		latitudeDelta: 0.0422,
-		longitudeDelta: 0.0221
+		latitudeDelta: this.LAT_DELTA_OUT,
+		longitudeDelta: this.LAT_DELTA_OUT
 	};
 
 	// decides if info info should display or not
-	state = { displayInfo: false };
+	state = { displayInfo: false, map: null, zoomed: false };
 
 	setDisplay = () => {
 		this.setState({ displayInfo: !this.state.displayInfo });
+		this.resetCoords();
+	};
+
+	resetCoords = () => {
+		this.defaultCoords = {
+			...this.defaultCoords,
+			latitudeDelta: this.LAT_DELTA_OUT,
+			longitudeDelta: this.LNG_DELTA_OUT
+		};
+	};
+
+	zoomMap = (e) => {
+		e.stopPropagation();
+
+		this.defaultCoords = {
+			...this.defaultCoords,
+			latitudeDelta: this.LAT_DELTA_IN,
+			longitudeDelta: this.LNG_DELTA_IN
+		};
+
+		this.state.map.animateToRegion(this.defaultCoords, 400);
+		this.setState({ zoomed: true });
 	};
 
 	renderMapOrInfo = () => {
@@ -29,8 +58,18 @@ class Shelter extends Component {
 		}
 
 		return (
-			<MapView style={mapStyles} initialRegion={this.defaultCoords}>
-				<Marker coordinate={{ latitude: this.coordinates[1], longitude: this.coordinates[0] }} />
+			<MapView
+				style={mapStyles}
+				initialRegion={this.defaultCoords}
+				ref={(ref) => (this.state.map = ref)}
+				onZoomOut={() => this.setState({ zoomed: false })}
+			>
+				<Marker
+					coordinate={{ latitude: this.coordinates[1], longitude: this.coordinates[0] }}
+					title={this.props.shelter.properties.adresse}
+					description={this.props.shelter.properties.kommune}
+					onPress={(e) => this.zoomMap(e)}
+				/>
 			</MapView>
 		);
 	};
