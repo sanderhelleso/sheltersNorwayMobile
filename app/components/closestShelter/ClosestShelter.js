@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { updateCLientLocationAction, setClosestShelterAction } from '../../store/actions/closestActions';
 
 import ClosestShelterLoader from './ClosestShelterLoader';
+import ClosestShelterError from './ClosestShelterError';
 
 import didLocationChange from '../../lib/didLocationChange';
 import findClosestShelter from '../../lib/findClosestShelter';
@@ -16,16 +17,34 @@ class ClosestShelter extends Component {
 
 	state = {
 		loading: true,
-		error: false
+		error: true
 	};
 
 	componentDidMount() {
-		console.log(this.props.closest);
+		this.getLocAndFind();
+	}
+
+	getLocAndFind = () => {
+		this.setState({ loading: true });
+
+		// compare current location to previously fetched location,
+		// if a difference is found, update the users current location
+		// and refetch the closest shelter, if not re-use previous closest shelter
+		const coords = this.getLocation();
+
+		// if an error occured while attemping to fetch location,
+		// display a generic error message and suggest user to re-try
+		if (coords) {
+			this.findClosest(coords);
+		}
+
+		this.setState({ loading: false });
+	};
+
+	// find and update store with users location
+	getLocation = () => {
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
-				// compare current location to previously fetched location,
-				// if a difference is found, update the users current location
-				// and refetch the closest shelter, if not re-use previous closest shelter
 				if (didLocationChange(pos.coords, this.props.closest.coords)) {
 					const { latitude, longitude, accuracy } = pos.coords;
 
@@ -37,32 +56,39 @@ class ClosestShelter extends Component {
 						timestamp: pos.timestamp
 					});
 
-					// find closest shelter
-					const closest = findClosestShelter(latitude, longitude, this.props.shelters);
-
-					// update the closest shelter for the user
-					this.props.setClosestShelterAction(closest);
+					return { latitude, longitude };
 				}
-
-				// complete loading and display result
-				this.setState({ loading: false });
-				alert(JSON.stringify(pos));
 			},
-			// if an error occured while attemping to fetch location,
-			// display a generic error message and suggest user to re-try
-			(error) => {
-				Alert.alert(error.message);
-				this.setState({
-					loading: false,
-					error: true
-				});
-			},
+			// handle error
+			() => this.setState({ error: true }),
+			// configuration declared at top of component
 			this.GEO_LOC_CONFIG
 		);
+	};
+
+	// find and update store with closest shelter from fetched user location
+	findClosest = (latitude, longitude) => {
+		// find closest shelter
+		const closest = findClosestShelter(latitude, longitude, this.props.shelters);
+
+		// update the closest shelter for the user
+		this.props.setClosestShelterAction(closest);
+	};
+
+	renderClosestShelter() {
+		if (this.state.loading) {
+			return <ClosestShelterLoader loading={this.state.loading} message="Søker..." />;
+		}
+
+		if (this.state.error) {
+			return <ClosestShelterError retry={findClosestShelter} />;
+		}
+
+		return null;
 	}
 
 	render() {
-		return <StyledView>{<ClosestShelterLoader loading={this.state.loading} message="Søker..." />}</StyledView>;
+		return <StyledView>{this.renderClosestShelter()}</StyledView>;
 	}
 }
 
