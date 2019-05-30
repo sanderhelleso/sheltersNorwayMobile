@@ -11,6 +11,7 @@ class ShelterInfoBtn extends Component {
 		return (
 			<ActionButton
 				buttonColor="#f50057"
+				position="right"
 				fixNativeFeedbackRadius={true}
 				onPress={this.props.onPress}
 				shadowStyle={styles.shadow}
