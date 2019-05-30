@@ -7,16 +7,13 @@ import { _getShelters } from '../../api/shelter';
 import { connect } from 'react-redux';
 
 class ShelterMap extends Component {
+	// Trondheim, Norway
 	defaultCoords = {
 		latitude: 63.446827,
 		longitude: 10.421906,
 		latitudeDelta: 10,
 		longitudeDelta: 10
 	};
-
-	async getShelters() {
-		await _getShelters();
-	}
 
 	renderMarkers = () => {
 		return this.props.shelters.features.map((shelter, i) => {

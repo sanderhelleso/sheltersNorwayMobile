@@ -11,6 +11,7 @@ import ClosestShelterError from './ClosestShelterError';
 
 import didLocationChange from '../../lib/didLocationChange';
 import findClosestShelter from '../../lib/findClosestShelter';
+import Shelter from '../shelter/Shelter';
 
 class ClosestShelter extends Component {
 	GEO_LOC_CONFIG = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
@@ -85,7 +86,7 @@ class ClosestShelter extends Component {
 			return <ClosestShelterError retry={this.getLocAndFind} />;
 		}
 
-		return <Text>{JSON.stringify(this.props.closest)}</Text>;
+		return <Shelter shelter={this.props.closest.shelter} />;
 	};
 
 	render() {
