@@ -1,5 +1,6 @@
 import shelters from '../../dataset/shelters';
 
+// load up shelter dataset on app load
 const initState = shelters;
 
 const sheltersReducer = (state = initState, action) => {
