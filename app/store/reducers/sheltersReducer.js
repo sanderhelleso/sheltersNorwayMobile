@@ -1,4 +1,6 @@
-const initState = {};
+import shelters from '../../dataset/shelters';
+
+const initState = shelters;
 
 const sheltersReducer = (state = initState, action) => {
 	switch (action.type) {
