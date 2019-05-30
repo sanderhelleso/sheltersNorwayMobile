@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+
+import ClosestShelter from '../components/closestShelter/ClosestShelter';
 
 const ClosestShelterScreen = () => {
-    return <Text>Closest</Text>
-}
+	return <ClosestShelter />;
+};
 
 export default ClosestShelterScreen;
