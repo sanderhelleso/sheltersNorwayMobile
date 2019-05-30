@@ -1,21 +1,25 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components';
+import { Ionicons } from '@expo/vector-icons';
 
 import capitalizeString from '../../lib/capitalizeString';
 
-const ShelterInfoListRow = ({ field, value, last }) => {
+const ShelterInfoListRow = ({ field, value, icon, last }) => {
 	return (
-		<StyledView last={last}>
-			<StyledField>{captializeString(field)}</StyledField>
-			<StyledValue>{value}</StyledValue>
+		<StyledView last={last} style={last ? null : bottomBorder}>
+			<View>
+				<Ionicons name={icon} size={28} color="#f50057" />
+				<StyledField>{field.toUpperCase()}</StyledField>
+			</View>
+			<StyledValue>{value ? value : 'UKJENT'}</StyledValue>
 		</StyledView>
 	);
 };
 
 const StyledView = styled.View`
-	padding: 15px 0px;
-	padding-bottom: ${(props) => (props.last ? 165 : 15)}px;
+	padding: 20px 0px;
+	padding-bottom: ${(props) => (props.last ? 165 : 20)}px;
 `;
 
 const StyledField = styled.Text`
@@ -30,5 +34,10 @@ const StyledValue = styled.Text`
 	color: #9e9e9e;
 	opacity: 0.7;
 `;
+
+const bottomBorder = {
+	borderBottomWidth: 0.5,
+	borderBottomColor: '#eeeeee'
+};
 
 export default ShelterInfoListRow;
