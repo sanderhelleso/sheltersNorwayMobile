@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 import { _getShelters } from '../../api/shelter';
@@ -15,8 +15,20 @@ class ShelterMap extends Component {
 		longitudeDelta: 10
 	};
 
+	state = { shelters: null };
+
+	// delay marker rendering to avoid map flickering of inital position
+	componentDidMount() {
+		setTimeout(() => {
+			this.setState({ shelters: this.props.shelters });
+		}, 200);
+	}
+
+	// iterate over shelters and display a marker with information for ea shelter
 	renderMarkers = () => {
-		return this.props.shelters.features.map((shelter, i) => {
+		if (!this.state.shelters) return null;
+
+		return this.state.shelters.features.map((shelter, i) => {
 			// shelters geocoords
 			const coords = shelter.geometry.coordinates;
 
@@ -36,20 +48,16 @@ class ShelterMap extends Component {
 
 	render() {
 		return (
-			<MapView style={styles.container} initialRegion={this.defaultCoords}>
+			<MapView style={mapStyles} initialRegion={this.defaultCoords}>
 				{this.renderMarkers()}
 			</MapView>
 		);
 	}
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF'
-	}
+const mapStyles = StyleSheet.create({
+	height: Dimensions.get('window').height,
+	width: Dimensions.get('window').width
 });
 
 const mapStateToProps = ({ shelters }) => {
