@@ -1,1 +1,0 @@
-export { addSearchToHistoryAction } from './shelters';
