@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MapView, { Marker } from 'react-native-maps';
 
 import ShelterInfoBtn from './ShelterInfoBtn';
+import ShelterInfo from './ShelterInfo';
 
 class Shelter extends Component {
 	// set default coords for maps initial render point and marker
@@ -24,7 +25,7 @@ class Shelter extends Component {
 
 	renderMapOrInfo = () => {
 		if (this.state.displayInfo) {
-			return <Text>Info</Text>;
+			return <ShelterInfo info={this.props.shelter.properties} />;
 		}
 
 		return (
