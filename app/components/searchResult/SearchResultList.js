@@ -5,9 +5,13 @@ import SearchResultListRow from './SearchResultListRow';
 
 const SearchResultList = ({ result }) => {
 	const renderList = () => {
-		return result.map((shelter, i) => {
-			return <SearchResultListRow key={i} info={shelter} />;
-		});
+		return result
+			.sort((a, b) => {
+				return a.properties.adresse.localeCompare(b.properties.adresse);
+			})
+			.map((shelter, i) => {
+				return <SearchResultListRow key={i} shelter={shelter} last={i === result.length - 1} />;
+			});
 	};
 
 	return (
