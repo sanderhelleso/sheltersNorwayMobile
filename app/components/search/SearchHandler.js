@@ -14,6 +14,11 @@ class SearchHandler extends Component {
 		this.setState({ keywords });
 	};
 
+	// perform search using passed in function from parent
+	onPressHandler = () => {
+		return this.props.onPress(this.state.keywords);
+	};
+
 	render() {
 		return (
 			<StyledView>
@@ -27,7 +32,7 @@ class SearchHandler extends Component {
 					tintColor="rgba(245, 0, 87, 0.2)"
 				/>
 				<StyledSeperator />
-				<Button text="SØK" icon="send" onPress={this.props.onPress} />
+				<Button text="SØK" icon="send" onPress={this.onPressHandler} />
 			</StyledView>
 		);
 	}

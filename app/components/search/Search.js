@@ -7,7 +7,9 @@ import SearchHandler from './SearchHandler';
 import { connect } from 'react-redux';
 
 class Search extends Component {
-	findShelters = (keywords) => {};
+	findShelters = (keywords) => {
+		console.log(keywords);
+	};
 
 	render() {
 		return (
