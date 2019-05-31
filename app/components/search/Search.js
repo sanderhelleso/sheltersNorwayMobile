@@ -6,9 +6,16 @@ import SearchHandler from './SearchHandler';
 
 import { connect } from 'react-redux';
 
+import filterSheltersByKeywords from '../../lib/filterSheltersByKeywords';
+
 class Search extends Component {
+	state = {
+		loading: false
+	};
+
 	findShelters = (keywords) => {
-		console.log(keywords);
+		const result = filterSheltersByKeywords(this.props.shelters, keywords);
+		console.log(result);
 	};
 
 	render() {
