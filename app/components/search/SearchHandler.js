@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, TextInput } from 'react-native';
 import styled from 'styled-components';
 
+import Button from '../sharable/Button';
+
 class SearchHandler extends Component {
 	state = {
 		keywords: ''
@@ -25,6 +27,7 @@ class SearchHandler extends Component {
 					tintColor="rgba(245, 0, 87, 0.2)"
 				/>
 				<StyledSeperator />
+				<Button text="SØK" icon="send" onPress={this.props.onPress} />
 			</StyledView>
 		);
 	}
