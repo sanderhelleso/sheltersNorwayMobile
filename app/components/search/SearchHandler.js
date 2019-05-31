@@ -16,7 +16,9 @@ class SearchHandler extends Component {
 
 	// perform search using passed in function from parent
 	onPressHandler = () => {
-		return this.props.onPress(this.state.keywords);
+		if (!this.props.loading) {
+			return this.props.onPress(this.state.keywords);
+		}
 	};
 
 	render() {
