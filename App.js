@@ -9,6 +9,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import ClosestShelterScreen from './app/screens/ClosestShelterScreen';
 import SearchScreen from './app/screens/SearchScreen';
 import ShelterMapScreen from './app/screens/ShelterMapScreen';
+import SearchResultScreen from './app/screens/SearchResultScreen';
 
 // setup global styles
 import globalStyles from './app/globalStyles';
@@ -39,6 +40,12 @@ const TopLevelNavigator = createStackNavigator(
 			screen: ShelterMapScreen,
 			navigationOptions: {
 				title: 'NORGESKART'
+			}
+		},
+		SearchResult: {
+			screen: SearchResultScreen,
+			navigationOptions: {
+				title: 'SØKERESULTAT'
 			}
 		}
 	},

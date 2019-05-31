@@ -7,10 +7,16 @@ import SearchHandler from './SearchHandler';
 
 import { connect } from 'react-redux';
 
+import navigationService from '../../navigationService.js';
+
 import filterSheltersByKeywords from '../../lib/filterSheltersByKeywords';
 
 class Search extends Component {
+	// error handlers
 	MIN_SEARCH_LEN = 2;
+	ERR_ALERT_TITLE = 'Wops';
+	ERR_ALERT_MSG = 'Søkefelt må inneholde minimum 2 bokstaver for å utføre søk.';
+
 	state = { loading: false };
 
 	findShelters = (keywords) => {
@@ -19,19 +25,26 @@ class Search extends Component {
 		// check passed, continue and perform search
 		this.setState({ loading: true });
 		const result = filterSheltersByKeywords(this.props.shelters, keywords);
-		this.setState({ loading: false });
 
-		console.log(result);
+		// if result contains elements navigate to result screen and display
+		if (result.length) {
+			navigationService.navigate('SearchResult', { keywords, result });
+		}
+
+		this.setState({ loading: false });
 	};
 
 	// ensure requirements for search is met
 	failedSearchRequirements = (keywords) => {
 		const failed = !keywords || keywords.length < this.MIN_SEARCH_LEN;
-		if (failed) {
-			Alert.alert('Wops', 'Søkefelt må inneholde minimum 2 bokstaver for å utføre søk.');
-		}
 
+		if (failed) this.showErrAlert();
 		return failed;
+	};
+
+	// display error alert
+	showErrAlert = () => {
+		Alert.alert(this.ERR_ALERT_TITLE, this.ERR_ALERT_MSG);
 	};
 
 	render() {
