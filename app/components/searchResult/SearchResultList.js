@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
@@ -11,9 +10,6 @@ import sortResultListByValue from '../../lib/sortResultListByValue';
 class SearchResultList extends Component {
 	// malloc for scrollview
 	listRef = null;
-
-	// screen height used to decide when to show scrollTop btn
-	screenHeight = Dimensions.get('window').height;
 
 	// record scrollstate
 	scrollState = {
@@ -41,9 +37,7 @@ class SearchResultList extends Component {
 		));
 	};
 
-	scrollTop = () => {
-		this.listRef.scrollTo({ y: 0 });
-	};
+	scrollTop = () => this.listRef.scrollTo({ y: 0 });
 
 	hideBtn = () => this.setState({ showBtn: false });
 
@@ -80,6 +74,7 @@ class SearchResultList extends Component {
 				>
 					{this.renderList()}
 				</StyledScrollView>
+
 				{this.state.showBtn && <SearchResultToTopBtn onPress={this.scrollTop} />}
 			</Fragment>
 		);

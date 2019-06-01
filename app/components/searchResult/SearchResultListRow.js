@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Platform } from 'react-native';
 import styled from 'styled-components';
 
 import capitalizeString from '../../lib/capitalizeString';
 
 const SearchResultListRow = ({ shelter: { geometry, properties }, last }) => {
+	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
 	const { adresse, areal, byggear, kommune, distriktsnavn, plasser } = properties;
 
 	return (
@@ -16,7 +17,7 @@ const SearchResultListRow = ({ shelter: { geometry, properties }, last }) => {
 			<StyledDescription>
 				Rommer {plasser || 'UKJENT'} plasser og har et areal på {areal || 'UKJENT'} m2
 			</StyledDescription>
-			<StyledSeeMoreText>SE MER</StyledSeeMoreText>
+			<StyledSeeMoreText>SE ME</StyledSeeMoreText>
 		</StyledView>
 	);
 };
