@@ -45,6 +45,8 @@ class SearchResultList extends Component {
 		this.listRef.scrollTo({ y: 0 });
 	};
 
+	hideBtn = () => this.setState({ showBtn: false });
+
 	handleScroll = (e) => {
 		const y = e.nativeEvent.contentOffset.y;
 
@@ -58,12 +60,10 @@ class SearchResultList extends Component {
 			// display button if user is scrolling downwards
 			if (!this.scrollState.dir) {
 				this.setState({ showBtn: true });
-			}
+			} else this.hideBtn();
 
 			// hide button if crieria is not met
-		} else if (this.state.showBtn) {
-			this.setState({ showBtn: false });
-		}
+		} else if (this.state.showBtn) this.hideBtn();
 
 		this.scrollState.y = y;
 	};
