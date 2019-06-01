@@ -10,6 +10,7 @@ import ClosestShelterScreen from './app/screens/ClosestShelterScreen';
 import SearchScreen from './app/screens/SearchScreen';
 import ShelterMapScreen from './app/screens/ShelterMapScreen';
 import SearchResultScreen from './app/screens/SearchResultScreen';
+import ShelterScreen from './app/screens/ShelterScreen';
 
 // setup global styles
 import globalStyles from './app/globalStyles';
@@ -46,6 +47,12 @@ const TopLevelNavigator = createStackNavigator(
 			screen: SearchResultScreen,
 			navigationOptions: {
 				title: 'SØKERESULTAT'
+			}
+		},
+		Shelter: {
+			screen: ShelterScreen,
+			navigationOptions: {
+				title: 'DETALJER'
 			}
 		}
 	},
