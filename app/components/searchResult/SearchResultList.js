@@ -3,11 +3,17 @@ import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
 import SearchResultSorter from './SearchResultSorter';
+import SearchResultToTopBtn from './SearchResultToTopBtn';
 
 import sortResultListByValue from '../../lib/sortResultListByValue';
 
 class SearchResultList extends Component {
-	state = { sortBy: 'Adresse A-Z', result: [ ...this.props.result ] };
+	listRef = null;
+
+	state = {
+		sortBy: 'Adresse A-Z',
+		result: [ ...this.props.result ]
+	};
 
 	updateSortBy = (value) => {
 		this.setState({
@@ -23,13 +29,22 @@ class SearchResultList extends Component {
 		));
 	};
 
+	scrollTop = () => {
+		this.listRef.scrollTo({ y: 0 });
+	};
+
 	render() {
 		return (
 			<Fragment>
 				<SearchResultSorter updateSortBy={this.updateSortBy} />
-				<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
+				<StyledScrollView
+					style={topBorder}
+					showsVerticalScrollIndicator={false}
+					ref={(ref) => (this.listRef = ref)}
+				>
 					{this.renderList()}
-				</StyledListCont>
+				</StyledScrollView>
+				<SearchResultToTopBtn onPress={this.scrollTop} />
 			</Fragment>
 		);
 	}
@@ -37,7 +52,7 @@ class SearchResultList extends Component {
 
 export default SearchResultList;
 
-const StyledListCont = styled.ScrollView`
+const StyledScrollView = styled.ScrollView`
 	margin: 7.5px 0;
 	padding: 10px 0;
 	min-height: 100%;
