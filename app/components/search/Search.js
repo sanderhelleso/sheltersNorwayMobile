@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import SearchHistory from './SearchHistory';
 import SearchHandler from './SearchHandler';
 
-import { connect } from 'react-redux';
-
 import navigationService from '../../navigationService.js';
-
 import filterSheltersByKeywords from '../../lib/filterSheltersByKeywords';
+import { showSearchErrAlert, showSearchResultErrAlert } from '../../lib/alerts';
 
 class Search extends Component {
 	// error handlers
@@ -24,12 +23,12 @@ class Search extends Component {
 
 		// check passed, continue and perform search
 		this.setState({ loading: true });
-		const result = filterSheltersByKeywords(this.props.shelters, keywords);
+		const result = filterSheltersByKeywords(this.props.shelters, keywords.trim());
 
 		// if result contains elements navigate to result screen and display
 		if (result.length) {
 			navigationService.navigate('SearchResult', { keywords, result });
-		}
+		} else showSearchResultErrAlert();
 
 		this.setState({ loading: false });
 	};
@@ -38,13 +37,8 @@ class Search extends Component {
 	failedSearchRequirements = (keywords) => {
 		const failed = !keywords || keywords.length < this.MIN_SEARCH_LEN;
 
-		if (failed) this.showErrAlert();
+		if (failed) showSearchErrAlert();
 		return failed;
-	};
-
-	// display error alert
-	showErrAlert = () => {
-		Alert.alert(this.ERR_ALERT_TITLE, this.ERR_ALERT_MSG);
 	};
 
 	render() {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import SearchArt from './SearchArt';
-
 class SearchHistory extends Component {
 	state = {
 		history: []
