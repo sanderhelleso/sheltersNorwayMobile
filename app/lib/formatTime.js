@@ -1,6 +1,6 @@
 // convert a timestamp to date
 export function tsToDate(timestamp) {
-	return new Date(timestamp).toDateString();
+	return new Date(timestamp).toJSON().slice(0, 10).split('-').reverse().join('/');
 }
 
 // convert a timestamp to HH:MM
