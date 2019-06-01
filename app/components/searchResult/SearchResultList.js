@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
@@ -8,11 +9,22 @@ import SearchResultToTopBtn from './SearchResultToTopBtn';
 import sortResultListByValue from '../../lib/sortResultListByValue';
 
 class SearchResultList extends Component {
+	// malloc for scrollview
 	listRef = null;
+
+	// screen height used to decide when to show scrollTop btn
+	screenHeight = Dimensions.get('window').height;
+
+	// record scrollstate
+	scrollState = {
+		dir: false, // true = down, false = up
+		y: 0
+	};
 
 	state = {
 		sortBy: 'Adresse A-Z',
-		result: [ ...this.props.result ]
+		result: [ ...this.props.result ],
+		showBtn: false
 	};
 
 	updateSortBy = (value) => {
@@ -33,18 +45,42 @@ class SearchResultList extends Component {
 		this.listRef.scrollTo({ y: 0 });
 	};
 
+	handleScroll = (e) => {
+		const y = e.nativeEvent.contentOffset.y;
+
+		// update scroll dir
+		if (y < this.scrollState.y) {
+			this.scrollState.dir = false;
+		} else this.scrollState.dir = true;
+
+		// user must have ateleast scrolled x
+		if (y >= 100) {
+			// display button if user is scrolling downwards
+			if (!this.scrollState.dir) {
+				this.setState({ showBtn: true });
+			}
+
+			// hide button if crieria is not met
+		} else if (this.state.showBtn) {
+			this.setState({ showBtn: false });
+		}
+
+		this.scrollState.y = y;
+	};
+
 	render() {
 		return (
 			<Fragment>
 				<SearchResultSorter updateSortBy={this.updateSortBy} />
 				<StyledScrollView
+					ref={(ref) => (this.listRef = ref)}
 					style={topBorder}
 					showsVerticalScrollIndicator={false}
-					ref={(ref) => (this.listRef = ref)}
+					onScroll={this.handleScroll}
 				>
 					{this.renderList()}
 				</StyledScrollView>
-				<SearchResultToTopBtn onPress={this.scrollTop} />
+				{this.state.showBtn && <SearchResultToTopBtn onPress={this.scrollTop} />}
 			</Fragment>
 		);
 	}
