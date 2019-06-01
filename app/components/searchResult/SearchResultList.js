@@ -1,31 +1,45 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
+import SearchResultSorter from './SearchResultSorter';
 
-const SearchResultList = ({ result }) => {
-	const renderList = () => {
-		return result
-			.sort((a, b) => {
-				return a.properties.adresse.localeCompare(b.properties.adresse);
-			})
-			.map((shelter, i) => {
-				return <SearchResultListRow key={i} shelter={shelter} last={i === result.length - 1} />;
-			});
+import sortResultListByValue from '../../lib/sortResultListByValue';
+
+class SearchResultList extends Component {
+	state = { sortBy: 'Adresse A-Z', result: [ ...this.props.result ] };
+
+	updateSortBy = (value) => {
+		this.setState({
+			sortBy: value,
+			result: [ ...this.props.result ]
+		});
 	};
 
-	return (
-		<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
-			{renderList()}
-		</StyledListCont>
-	);
-};
+	renderList = () => {
+		// renders the sorted list in the order selected by the dropdowns value
+		return sortResultListByValue(this.state.result, this.state.sortBy).map((shelter, i) => (
+			<SearchResultListRow key={i} shelter={shelter} last={i === this.props.result.length - 1} />
+		));
+	};
+
+	render() {
+		return (
+			<Fragment>
+				<SearchResultSorter updateSortBy={this.updateSortBy} />
+				<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
+					{this.renderList()}
+				</StyledListCont>
+			</Fragment>
+		);
+	}
+}
 
 export default SearchResultList;
 
 const StyledListCont = styled.ScrollView`
-	margin: 15px 0;
-	padding: 20px 0;
+	margin: 7.5px 0;
+	padding: 10px 0;
 	min-height: 100%;
 `;
 
