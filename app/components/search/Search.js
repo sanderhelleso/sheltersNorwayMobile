@@ -18,12 +18,14 @@ class Search extends Component {
 
 	state = { loading: false };
 
+	// find shelters from trimmed keywords
 	findShelters = (keywords) => {
+		keywords = keywords.replace(/ /g, '');
 		if (this.failedSearchRequirements(keywords)) return;
 
 		// check passed, continue and perform search
 		this.setState({ loading: true });
-		const result = filterSheltersByKeywords(this.props.shelters, keywords.trim());
+		const result = filterSheltersByKeywords(this.props.shelters, keywords);
 
 		// if result contains elements navigate to result screen and display
 		if (result.length) {
