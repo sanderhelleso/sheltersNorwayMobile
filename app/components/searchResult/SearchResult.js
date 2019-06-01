@@ -25,7 +25,7 @@ const StyledView = styled.View`
 const StyledKeywords = styled.Text`
 	color: #9e9e9e;
 	font-size: 16px;
-	margin-top: 5px;
+	margin: 5px 0;
 `;
 
 const StyledKeywordsStrong = styled.Text`

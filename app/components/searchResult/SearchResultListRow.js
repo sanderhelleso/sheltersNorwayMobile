@@ -27,7 +27,7 @@ const StyledView = styled.View`
 	flex: 1;
 	margin-bottom: 25px;
 	padding: 10px 0;
-	padding-bottom: ${(props) => (props.last ? 165 : 20)}px;
+	padding-bottom: ${(props) => (props.last ? 230 : 20)}px;
 `;
 
 const StyledHeading = styled.Text`
