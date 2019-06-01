@@ -4,28 +4,24 @@ import { connect } from 'react-redux';
 
 import SearchHistoryRecord from './SearchHistoryRecord';
 
-class SearchHistory extends Component {
-	renderSearchHistory() {
-		if (!this.props.searchHistory.length) {
+const SearchHistory = ({ searchHistory }) => {
+	const renderSearchHistory = () => {
+		if (!searchHistory.length) {
 			return <StyledPlaceholder>Du har ingen tidligere søk.</StyledPlaceholder>;
 		}
 
-		return this.props.searchHistory.map((history, i) => {
+		return searchHistory.map((history, i) => {
 			return <SearchHistoryRecord key={i} record={history} />;
 		});
-	}
+	};
 
-	render() {
-		return (
-			<StyledView style={bottomBorder}>
-				<StyledPlaceholderView>
-					<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
-					{this.renderSearchHistory()}
-				</StyledPlaceholderView>
-			</StyledView>
-		);
-	}
-}
+	return (
+		<StyledView style={bottomBorder}>
+			<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
+			<StyledHistoryView>{renderSearchHistory()}</StyledHistoryView>
+		</StyledView>
+	);
+};
 
 const mapStateToProps = ({ search: { searchHistory } }) => {
 	return { searchHistory };
@@ -53,12 +49,12 @@ const StyledHeading = styled.Text`
 	font-size: 26.5px;
 	font-weight: 800;
 	letter-spacing: 2px;
+	margin-bottom: 10px;
 `;
 
-const StyledPlaceholderView = styled.View`
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+const StyledHistoryView = styled.View`
+	margin-top: 10px;
+	padding: 0 30px;
 `;
 
 const bottomBorder = {

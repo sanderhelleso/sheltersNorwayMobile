@@ -31,8 +31,7 @@ class Search extends Component {
 			// navigate to result screen
 			navigationService.navigate('SearchResult', { keywords, result });
 
-			// add to history with a little timeout
-			// to not be shown while changing screens
+			// avoid flickering during screen change
 			setTimeout(() => {
 				this.props.addSearchToHistoryAction({
 					keywords,
