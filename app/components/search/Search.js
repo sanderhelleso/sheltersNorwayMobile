@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import SearchHistory from './SearchHistory';
 import SearchHandler from './SearchHandler';
@@ -9,13 +10,11 @@ import SearchHandler from './SearchHandler';
 import navigationService from '../../navigationService.js';
 import filterSheltersByKeywords from '../../lib/filterSheltersByKeywords';
 import { showSearchErrAlert, showSearchResultErrAlert } from '../../lib/alerts';
+import { addSearchToHistoryAction } from '../../store/actions/searchActions';
 
 class Search extends Component {
 	// error handlers
 	MIN_SEARCH_LEN = 2;
-	ERR_ALERT_TITLE = 'Wops';
-	ERR_ALERT_MSG = 'Søkefelt må inneholde minimum 2 bokstaver for å utføre søk.';
-
 	state = { loading: false };
 
 	// find shelters from trimmed keywords
@@ -29,7 +28,18 @@ class Search extends Component {
 
 		// if result contains elements navigate to result screen and display
 		if (result.length) {
+			// navigate to result screen
 			navigationService.navigate('SearchResult', { keywords, result });
+
+			// add to history with a little timeout
+			// to not be shown while changing screens
+			setTimeout(() => {
+				this.props.addSearchToHistoryAction({
+					keywords,
+					result,
+					time: new Date().getTime()
+				});
+			}, 1000);
 		} else showSearchResultErrAlert();
 
 		this.setState({ loading: false });
@@ -57,7 +67,11 @@ const mapStateToProps = ({ shelters }) => {
 	return { shelters };
 };
 
-export default connect(mapStateToProps, null)(Search);
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators({ addSearchToHistoryAction }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 const StyledView = styled.View`
 	flex: 1;

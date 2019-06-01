@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import SearchHistoryRecord from './SearchHistoryRecord';
 
 class SearchHistory extends Component {
-	state = {
-		history: []
-	};
-
-	renderHistory() {
-		if (!this.state.history.length) {
-			return (
-				<StyledPlaceholderView>
-					<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
-					<StyledPlaceholder>Du har ingen tidligere søk.</StyledPlaceholder>
-				</StyledPlaceholderView>
-			);
+	renderSearchHistory() {
+		if (!this.props.searchHistory.length) {
+			return <StyledPlaceholder>Du har ingen tidligere søk.</StyledPlaceholder>;
 		}
 
-		return null;
+		return this.props.searchHistory.map((history, i) => {
+			return <SearchHistoryRecord key={i} record={history} />;
+		});
 	}
 
 	render() {
-		return <StyledView style={bottomBorder}>{this.renderHistory()}</StyledView>;
+		return (
+			<StyledView style={bottomBorder}>
+				<StyledPlaceholderView>
+					<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
+					{this.renderSearchHistory()}
+				</StyledPlaceholderView>
+			</StyledView>
+		);
 	}
 }
 
-export default SearchHistory;
+const mapStateToProps = ({ search: { searchHistory } }) => {
+	return { searchHistory };
+};
+
+export default connect(mapStateToProps, null)(SearchHistory);
 
 const StyledView = styled.View`
 	min-width: 100%;
