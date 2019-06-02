@@ -14,7 +14,8 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
 	key: 'root',
-	storage
+	storage,
+	blacklist: [ 'shelters' ]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
