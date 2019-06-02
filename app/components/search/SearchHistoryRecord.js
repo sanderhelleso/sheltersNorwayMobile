@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import formatTime from '../../lib/formatTime';
 import navigationService from '../../navigationService.js';
 import { Ionicons } from '@expo/vector-icons';
+import iconPrefix from '../../lib/iconPrefix';
 
 const SearchHistoryRecord = ({ record }) => {
-	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
 	const { keywords, result, time } = record;
 
 	const quickSearch = () => {

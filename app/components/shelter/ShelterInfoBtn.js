@@ -3,10 +3,9 @@ import { StyleSheet, Platform } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import iconPrefix from '../../lib/iconPrefix';
 
 class ShelterInfoBtn extends Component {
-	iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	render() {
 		return (
 			<ActionButton
@@ -15,9 +14,7 @@ class ShelterInfoBtn extends Component {
 				fixNativeFeedbackRadius={true}
 				onPress={this.props.onPress}
 				shadowStyle={styles.shadow}
-				renderIcon={() => (
-					<Icon name={`${this.iconPrefix}-${this.props.icon}`} style={styles.actionButtonIcon} />
-				)}
+				renderIcon={() => <Icon name={`${iconPrefix}-${this.props.icon}`} style={styles.actionButtonIcon} />}
 			/>
 		);
 	}

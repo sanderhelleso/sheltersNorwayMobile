@@ -3,10 +3,9 @@ import { StyleSheet, Platform } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import iconPrefix from '../../lib/iconPrefix';
 
 class SearchResultToTopBtn extends Component {
-	iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	render() {
 		return (
 			<ActionButton
@@ -15,7 +14,7 @@ class SearchResultToTopBtn extends Component {
 				fixNativeFeedbackRadius={true}
 				shadowStyle={styles.shadow}
 				onPress={this.props.onPress}
-				renderIcon={() => <Icon name={`${this.iconPrefix}-arrow-up`} style={styles.actionButtonIcon} />}
+				renderIcon={() => <Icon name={`${iconPrefix}-arrow-up`} style={styles.actionButtonIcon} />}
 			/>
 		);
 	}
