@@ -45,7 +45,7 @@ export default SearchHandler;
 const StyledView = styled.View`
 	min-width: 75%;
 	border-width: 0;
-	flex: 3;
+	flex: 2.75;
 `;
 
 const StyledInput = styled.TextInput`
@@ -57,7 +57,7 @@ const StyledInput = styled.TextInput`
 `;
 
 const StyledSeperator = styled.View`
-	min-height: 100px;
+	min-height: 75px;
 	min-width: 1.5px;
 	background-color: #eeeeee;
 	margin: 25px auto;

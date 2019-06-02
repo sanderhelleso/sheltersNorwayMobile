@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import SearchArt from './SearchArt';
+import SearchHistoryRecord from './SearchHistoryRecord';
 
-class SearchHistory extends Component {
-	state = {
-		history: []
-	};
-
-	renderHistory() {
-		if (!this.state.history.length) {
-			return (
-				<StyledPlaceholderView>
-					<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
-					<StyledPlaceholder>Du har ingen tidligere søk.</StyledPlaceholder>
-				</StyledPlaceholderView>
-			);
+const SearchHistory = ({ searchHistory }) => {
+	const renderSearchHistory = () => {
+		if (!searchHistory.length) {
+			return <StyledPlaceholder>Du har ingen tidligere søk.</StyledPlaceholder>;
 		}
 
-		return null;
-	}
+		return searchHistory.map((history, i) => {
+			return <SearchHistoryRecord key={i} record={history} />;
+		});
+	};
 
-	render() {
-		return <StyledView style={bottomBorder}>{this.renderHistory()}</StyledView>;
-	}
-}
+	return (
+		<StyledView style={bottomBorder}>
+			<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
+			<StyledHistoryView>{renderSearchHistory()}</StyledHistoryView>
+		</StyledView>
+	);
+};
 
-export default SearchHistory;
+const mapStateToProps = ({ search: { searchHistory } }) => {
+	return { searchHistory };
+};
+
+export default connect(mapStateToProps, null)(SearchHistory);
 
 const StyledView = styled.View`
 	min-width: 100%;
-	flex: 2;
+	flex: 2.35;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin-bottom: 55px;
+	margin-bottom: 40px;
 `;
 
 const StyledPlaceholder = styled.Text`
@@ -48,12 +49,12 @@ const StyledHeading = styled.Text`
 	font-size: 26.5px;
 	font-weight: 800;
 	letter-spacing: 2px;
+	margin-bottom: 10px;
 `;
 
-const StyledPlaceholderView = styled.View`
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+const StyledHistoryView = styled.View`
+	margin-top: 10px;
+	padding: 0 30px;
 `;
 
 const bottomBorder = {

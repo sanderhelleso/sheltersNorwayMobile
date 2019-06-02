@@ -10,6 +10,9 @@ class Shelter extends Component {
 	// set default coords for maps initial render point and marker
 	coordinates = this.props.shelter.geometry.coordinates;
 
+	// malloc for marker
+	mark = null;
+
 	// default deltas for markers zoomed in / out state
 	LAT_DELTA_OUT = 0.0422;
 	LAT_DELTA_IN = 0.0025;
@@ -63,8 +66,10 @@ class Shelter extends Component {
 				initialRegion={this.defaultCoords}
 				ref={(ref) => (this.state.map = ref)}
 				onZoomOut={() => this.setState({ zoomed: false })}
+				onLayout={() => this.mark && this.mark.showCallout()}
 			>
 				<Marker
+					ref={(ref) => (this.mark = ref)}
 					coordinate={{ latitude: this.coordinates[1], longitude: this.coordinates[0] }}
 					title={this.props.shelter.properties.adresse}
 					description={this.props.shelter.properties.kommune}

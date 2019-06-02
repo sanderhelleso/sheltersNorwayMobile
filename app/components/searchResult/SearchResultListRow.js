@@ -1,11 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Platform, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 
 import capitalizeString from '../../lib/capitalizeString';
+import navigationService from '../../navigationService.js';
 
-const SearchResultListRow = ({ shelter: { geometry, properties }, last }) => {
+const SearchResultListRow = ({ shelter, last }) => {
+	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
+
+	const { properties } = shelter;
 	const { adresse, areal, byggear, kommune, distriktsnavn, plasser } = properties;
+
+	const seeMore = () => {
+		navigationService.navigate('Shelter', { shelter });
+	};
 
 	return (
 		<StyledView last={last} style={last ? null : bottomBorder}>
@@ -16,7 +24,9 @@ const SearchResultListRow = ({ shelter: { geometry, properties }, last }) => {
 			<StyledDescription>
 				Rommer {plasser || 'UKJENT'} plasser og har et areal på {areal || 'UKJENT'} m2
 			</StyledDescription>
-			<StyledSeeMoreText>SE MER</StyledSeeMoreText>
+			<TouchableOpacity onPress={() => seeMore()}>
+				<StyledSeeMoreText>SE MER</StyledSeeMoreText>
+			</TouchableOpacity>
 		</StyledView>
 	);
 };

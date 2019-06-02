@@ -1,4 +1,5 @@
 import { ADD_SEARCH_TO_HISTORY } from '../actions/actionTypes';
+import historyQueue from '../../lib/historyQueue';
 
 const initState = {
 	searchHistory: []
@@ -9,7 +10,7 @@ const searchReducer = (state = initState, action) => {
 		case ADD_SEARCH_TO_HISTORY: {
 			return {
 				...state,
-				searchHistory: [ ...state.searchHistory, action.payload ]
+				searchHistory: historyQueue(state.searchHistory, action.payload)
 			};
 		}
 

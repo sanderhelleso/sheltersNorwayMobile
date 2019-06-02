@@ -3,11 +3,25 @@ import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
 import SearchResultSorter from './SearchResultSorter';
+import SearchResultToTopBtn from './SearchResultToTopBtn';
 
 import sortResultListByValue from '../../lib/sortResultListByValue';
 
 class SearchResultList extends Component {
-	state = { sortBy: 'Adresse A-Z', result: [ ...this.props.result ] };
+	// malloc for scrollview
+	listRef = null;
+
+	// record scrollstate
+	scrollState = {
+		dir: false, // true = down, false = up
+		y: 0
+	};
+
+	state = {
+		sortBy: 'Adresse A-Z',
+		result: [ ...this.props.result ],
+		showBtn: false
+	};
 
 	updateSortBy = (value) => {
 		this.setState({
@@ -19,17 +33,29 @@ class SearchResultList extends Component {
 	renderList = () => {
 		// renders the sorted list in the order selected by the dropdowns value
 		return sortResultListByValue(this.state.result, this.state.sortBy).map((shelter, i) => (
-			<SearchResultListRow key={i} shelter={shelter} last={i === this.props.result.length - 1} />
+			<SearchResultListRow
+				key={shelter.properties.adresse}
+				shelter={shelter}
+				last={i === this.props.result.length - 1}
+			/>
 		));
 	};
+
+	scrollTop = () => this.listRef.scrollTo({ y: 0 });
 
 	render() {
 		return (
 			<Fragment>
-				<SearchResultSorter updateSortBy={this.updateSortBy} />
-				<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
+				{this.state.result.length > 1 && <SearchResultSorter updateSortBy={this.updateSortBy} />}
+				<StyledScrollView
+					ref={(ref) => (this.listRef = ref)}
+					style={topBorder}
+					showsVerticalScrollIndicator={false}
+				>
 					{this.renderList()}
-				</StyledListCont>
+				</StyledScrollView>
+
+				<SearchResultToTopBtn onPress={this.scrollTop} />
 			</Fragment>
 		);
 	}
@@ -37,7 +63,7 @@ class SearchResultList extends Component {
 
 export default SearchResultList;
 
-const StyledListCont = styled.ScrollView`
+const StyledScrollView = styled.ScrollView`
 	margin: 7.5px 0;
 	padding: 10px 0;
 	min-height: 100%;
