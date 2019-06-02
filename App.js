@@ -3,7 +3,8 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import navigationService from './app/navigationService';
 
 import { Provider } from 'react-redux';
-import configureStore from './app/store/configureStore';
+import { persistor, store } from './app/store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import HomeScreen from './app/screens/HomeScreen';
 import ClosestShelterScreen from './app/screens/ClosestShelterScreen';
@@ -72,20 +73,19 @@ const TopLevelNavigator = createStackNavigator(
 	}
 );
 
-// redux store for sharable app state
-const store = configureStore();
-
 // top level container for navigation
 const AppContainer = createAppContainer(TopLevelNavigator);
 
 const App = () => {
 	return (
 		<Provider store={store}>
-			<AppContainer
-				ref={(navigatorRef) => {
-					navigationService.setTopLevelNavigator(navigatorRef);
-				}}
-			/>
+			<PersistGate loading={null} persistor={persistor}>
+				<AppContainer
+					ref={(navigatorRef) => {
+						navigationService.setTopLevelNavigator(navigatorRef);
+					}}
+				/>
+			</PersistGate>
 		</Provider>
 	);
 };

@@ -23,6 +23,7 @@
 		"react-navigation-transitions": "^1.0.10",
 		"react-redux": "6.0.1",
 		"redux": "^4.0.1",
+		"redux-persist": "^5.10.0",
 		"remote-redux-devtools": "^0.5.16",
 		"remote-redux-devtools-sp": "^0.5.13",
 		"save": "^2.4.0",
