@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import formatTime from '../../lib/formatTime';
 import navigationService from '../../navigationService.js';
@@ -15,12 +15,12 @@ const SearchHistoryRecord = ({ record }) => {
 
 	return (
 		<StyledView>
-			<StyledKeywords>
+			<StyledKeywords onPress={() => quickSearch()}>
 				{keywords} <StyledTime>{formatTime(time)}</StyledTime>
 			</StyledKeywords>
-			<StyledIcon onPress={() => quickSearch()}>
+			<TouchableOpacity style={{ position: 'absolute', right: 0 }} onPress={() => quickSearch()}>
 				<Ionicons name={`${iconPrefix}-arrow-forward`} size={30} color="#f50057" />
-			</StyledIcon>
+			</TouchableOpacity>
 		</StyledView>
 	);
 };

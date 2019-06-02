@@ -33,49 +33,29 @@ class SearchResultList extends Component {
 	renderList = () => {
 		// renders the sorted list in the order selected by the dropdowns value
 		return sortResultListByValue(this.state.result, this.state.sortBy).map((shelter, i) => (
-			<SearchResultListRow key={i} shelter={shelter} last={i === this.props.result.length - 1} />
+			<SearchResultListRow
+				key={shelter.properties.adresse}
+				shelter={shelter}
+				last={i === this.props.result.length - 1}
+			/>
 		));
 	};
 
 	scrollTop = () => this.listRef.scrollTo({ y: 0 });
 
-	hideBtn = () => this.setState({ showBtn: false });
-
-	handleScroll = (e) => {
-		const y = e.nativeEvent.contentOffset.y;
-
-		// update scroll dir
-		if (y < this.scrollState.y) {
-			this.scrollState.dir = false;
-		} else this.scrollState.dir = true;
-
-		// user must have ateleast scrolled x
-		if (y >= 100) {
-			// display button if user is scrolling downwards
-			if (!this.scrollState.dir) {
-				this.setState({ showBtn: true });
-			} else this.hideBtn();
-
-			// hide button if crieria is not met
-		} else if (this.state.showBtn) this.hideBtn();
-
-		this.scrollState.y = y;
-	};
-
 	render() {
 		return (
 			<Fragment>
-				<SearchResultSorter updateSortBy={this.updateSortBy} />
+				{this.state.result.length > 1 && <SearchResultSorter updateSortBy={this.updateSortBy} />}
 				<StyledScrollView
 					ref={(ref) => (this.listRef = ref)}
 					style={topBorder}
 					showsVerticalScrollIndicator={false}
-					onScroll={this.handleScroll}
 				>
 					{this.renderList()}
 				</StyledScrollView>
 
-				{this.state.showBtn && <SearchResultToTopBtn onPress={this.scrollTop} />}
+				<SearchResultToTopBtn onPress={this.scrollTop} />
 			</Fragment>
 		);
 	}

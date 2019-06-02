@@ -31,11 +31,11 @@ export default connect(mapStateToProps, null)(SearchHistory);
 
 const StyledView = styled.View`
 	min-width: 100%;
-	flex: 2;
+	flex: 2.35;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin-bottom: 55px;
+	margin-bottom: 40px;
 `;
 
 const StyledPlaceholder = styled.Text`

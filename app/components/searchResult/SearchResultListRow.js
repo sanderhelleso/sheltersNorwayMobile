@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Platform } from 'react-native';
+import { Text, View, Platform, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 
 import capitalizeString from '../../lib/capitalizeString';
@@ -24,7 +24,9 @@ const SearchResultListRow = ({ shelter, last }) => {
 			<StyledDescription>
 				Rommer {plasser || 'UKJENT'} plasser og har et areal på {areal || 'UKJENT'} m2
 			</StyledDescription>
-			<StyledSeeMoreText onPress={() => seeMore()}>SE MER</StyledSeeMoreText>
+			<TouchableOpacity onPress={() => seeMore()}>
+				<StyledSeeMoreText>SE MER</StyledSeeMoreText>
+			</TouchableOpacity>
 		</StyledView>
 	);
 };
