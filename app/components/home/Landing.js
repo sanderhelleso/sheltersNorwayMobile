@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
+import navigationService from '../../navigationService.js';
 
 import ActionsGroup from './ActionsGroup';
 
@@ -23,7 +24,9 @@ const Landing = () => {
 			</StyledView>
 			<ActionsGroup />
 			<StyledAbout>
-				<Text style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Om denne applikasjonen</Text>
+				<TouchableOpacity onPress={() => navigationService.navigate('AboutApp', {})}>
+					<Text style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Om denne applikasjonen</Text>
+				</TouchableOpacity>
 			</StyledAbout>
 		</Fragment>
 	);
