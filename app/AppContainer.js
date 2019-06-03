@@ -8,6 +8,7 @@ import SearchScreen from './screens/SearchScreen';
 import ShelterMapScreen from './screens/ShelterMapScreen';
 import SearchResultScreen from './screens/SearchResultScreen';
 import ShelterScreen from './screens/ShelterScreen';
+import AboutAppScreen from './screens/AboutAppScreen';
 
 // routes to screens
 const TopLevelNavigator = createStackNavigator(
@@ -46,6 +47,12 @@ const TopLevelNavigator = createStackNavigator(
 			screen: ShelterScreen,
 			navigationOptions: {
 				title: 'DETALJER'
+			}
+		},
+		AboutApp: {
+			screen: AboutAppScreen,
+			navigationOptions: {
+				title: 'OM APPLIKASJONEN'
 			}
 		}
 	},

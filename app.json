@@ -1,7 +1,7 @@
 {
 	"expo": {
 		"name": "Offentlige tilfluktsrom i Norge",
-		"slug": "Offentlige tilfluktsrom i Norge",
+		"slug": "Offentlige_tilfluktsrom_i_Norge",
 		"privacy": "public",
 		"sdkVersion": "32.0.0",
 		"platforms": [ "ios", "android" ],
