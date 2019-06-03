@@ -5,10 +5,9 @@ import { Platform } from 'react-native';
 import ActionButton from './ActionButton';
 
 import navigationService from '../../navigationService.js';
+import iconPrefix from '../../lib/iconPrefix';
 
 const ActionsGroup = () => {
-	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	// list of available actions presented to user
 	// Find closest, search and see map
 	const actions = [

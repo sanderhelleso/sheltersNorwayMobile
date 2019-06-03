@@ -2,10 +2,9 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import ShelterInfoListRow from './ShelterInfoListRow';
+import iconPrefix from '../../lib/iconPrefix';
 
 const ShelterInfoList = ({ info }) => {
-	iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	// get important fields
 	const { adresse, areal, byggear, kommune, distriktsnavn, plasser } = info;
 

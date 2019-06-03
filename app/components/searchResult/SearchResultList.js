@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import SearchResultListRow from './SearchResultListRow';
 import SearchResultSorter from './SearchResultSorter';
-import SearchResultToTopBtn from './SearchResultToTopBtn';
+import FloatingActionButton from '../sharable/FloatingActionButton';
 
 import sortResultListByValue from '../../lib/sortResultListByValue';
 
@@ -55,7 +55,7 @@ class SearchResultList extends Component {
 					{this.renderList()}
 				</StyledScrollView>
 
-				<SearchResultToTopBtn onPress={this.scrollTop} />
+				<FloatingActionButton onPress={this.scrollTop} icon="arrow-up" />
 			</Fragment>
 		);
 	}

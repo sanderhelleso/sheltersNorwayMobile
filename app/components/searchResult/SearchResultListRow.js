@@ -4,10 +4,9 @@ import styled from 'styled-components';
 
 import capitalizeString from '../../lib/capitalizeString';
 import navigationService from '../../navigationService.js';
+import iconPrefix from '../../lib/iconPrefix';
 
 const SearchResultListRow = ({ shelter, last }) => {
-	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	const { properties } = shelter;
 	const { adresse, areal, byggear, kommune, distriktsnavn, plasser } = properties;
 

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
 import styled from 'styled-components';
+import iconPrefix from '../../lib/iconPrefix';
 
 const Button = ({ text, icon, onPress, disabled }) => {
-	const iconPrefix = Platform.OS === 'ios' ? 'ios' : 'md';
-
 	const renderIcon = () => {
 		if (icon) {
 			return <Ionicons name={`${iconPrefix}-${icon}`} size={20} color="white" />;

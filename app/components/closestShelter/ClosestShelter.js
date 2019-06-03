@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text, Alert } from 'react-native';
 import styled from 'styled-components';
 
 import { bindActionCreators } from 'redux';
