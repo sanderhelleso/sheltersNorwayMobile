@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { MapView } from 'expo';
 
 import { _getShelters } from '../../api/shelter';
 
@@ -36,7 +36,7 @@ class ShelterMap extends Component {
 			const { adresse, kommune } = shelter.properties;
 
 			return (
-				<Marker
+				<MapView.Marker
 					key={i}
 					coordinate={{ latitude: coords[1], longitude: coords[0] }}
 					title={adresse}

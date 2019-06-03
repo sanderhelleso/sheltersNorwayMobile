@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, Text } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import styled from 'styled-components';
-import MapView, { Marker } from 'react-native-maps';
+import { MapView } from 'expo';
 
 import ShelterInfoBtn from './ShelterInfoBtn';
 import ShelterInfo from './ShelterInfo';
@@ -68,7 +68,7 @@ class Shelter extends Component {
 				onZoomOut={() => this.setState({ zoomed: false })}
 				onLayout={() => this.mark && this.mark.showCallout()}
 			>
-				<Marker
+				<MapView.Marker
 					ref={(ref) => (this.mark = ref)}
 					coordinate={{ latitude: this.coordinates[1], longitude: this.coordinates[0] }}
 					title={this.props.shelter.properties.adresse}
