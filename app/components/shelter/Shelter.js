@@ -3,8 +3,8 @@ import { StyleSheet, Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { MapView } from 'expo';
 
-import ShelterInfoBtn from './ShelterInfoBtn';
 import ShelterInfo from './ShelterInfo';
+import FloatingActionButton from '../sharable/FloatingActionButton';
 
 class Shelter extends Component {
 	// set default coords for maps initial render point and marker
@@ -83,7 +83,7 @@ class Shelter extends Component {
 		return (
 			<StyledView>
 				{this.renderMapOrInfo()}
-				<ShelterInfoBtn
+				<FloatingActionButton
 					icon={this.state.displayInfo ? 'map' : 'information-circle-outline'}
 					onPress={this.setDisplay}
 				/>
