@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import iconPrefix from '../../lib/iconPrefix';
 
 class ShelterInfoBtn extends Component {
@@ -14,7 +14,9 @@ class ShelterInfoBtn extends Component {
 				fixNativeFeedbackRadius={true}
 				onPress={this.props.onPress}
 				shadowStyle={styles.shadow}
-				renderIcon={() => <Icon name={`${iconPrefix}-${this.props.icon}`} style={styles.actionButtonIcon} />}
+				renderIcon={() => (
+					<Ionicons name={`${iconPrefix}-${this.props.icon}`} style={styles.actionButtonIcon} />
+				)}
 			/>
 		);
 	}

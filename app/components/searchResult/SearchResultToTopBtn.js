@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import iconPrefix from '../../lib/iconPrefix';
 
 class SearchResultToTopBtn extends Component {
@@ -14,7 +14,7 @@ class SearchResultToTopBtn extends Component {
 				fixNativeFeedbackRadius={true}
 				shadowStyle={styles.shadow}
 				onPress={this.props.onPress}
-				renderIcon={() => <Icon name={`${iconPrefix}-arrow-up`} style={styles.actionButtonIcon} />}
+				renderIcon={() => <Ionicons name={`${iconPrefix}-arrow-up`} style={styles.actionButtonIcon} />}
 			/>
 		);
 	}
