@@ -14,7 +14,7 @@ const ShelterInfo = ({ info }) => {
 
 	return (
 		<StyledView>
-			<StyledHeading>INFORMASJON</StyledHeading>
+			<StyledHeading adjustsFontSizeToFit>INFORMASJON</StyledHeading>
 			<StyledDescription>{buildDescription()}</StyledDescription>
 			<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
 				<ShelterInfoList info={info} />

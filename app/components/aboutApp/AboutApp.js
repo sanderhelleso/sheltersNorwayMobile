@@ -23,7 +23,7 @@ const AboutApp = () => {
 	const renderLinks = () => {
 		return links.map((link, i) => {
 			return (
-				<StyledLink key={i} onPress={() => Linking.openURL(link.url)}>
+				<StyledLink key={i} onPress={() => Linking.openURL(link.url)} adjustsFontSizeToFit>
 					{link.text}
 				</StyledLink>
 			);
@@ -33,11 +33,15 @@ const AboutApp = () => {
 	return (
 		<ScrollView>
 			<StyledView>
-				<StyledText style={{ fontWeight: '600' }}>{intro}</StyledText>
-				<StyledText>{dataInfo}</StyledText>
+				<StyledText style={{ fontWeight: '600' }} adjustsFontSizeToFit>
+					{intro}
+				</StyledText>
+				<StyledText adjustsFontSizeToFit>{dataInfo}</StyledText>
 			</StyledView>
 			<StyledView>
-				<StyledHeading style={bottomBorder}>RESSURSER</StyledHeading>
+				<StyledHeading style={bottomBorder} adjustsFontSizeToFit>
+					RESSURSER
+				</StyledHeading>
 				{renderLinks()}
 			</StyledView>
 		</ScrollView>
@@ -66,7 +70,7 @@ const StyledLink = styled.Text`
 
 const StyledHeading = styled.Text`
 	letter-spacing: 3px;
-	font-size: 24px;
+	font-size: 24;
 	font-weight: 800;
 	color: #9e9e9e;
 	opacity: 0.5;
