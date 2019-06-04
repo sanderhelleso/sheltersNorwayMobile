@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 import Button from '../sharable/Button';
 
-const ClosestShelterError = ({ retry }) => {
+const ClosestShelterError = ({ retry, message }) => {
 	return (
 		<StyledView>
 			<StyledView>
 				<StyledHeading>Noe gikk galt...</StyledHeading>
-				<StyledText>Klarte ikke laste inn nødvending data for å utføre handlingen.</StyledText>
+				<StyledText>{message}</StyledText>
 			</StyledView>
 			<StyledView>
 				<Button text="PRØV IGJEN" icon="refresh" onPress={() => retry()} />
