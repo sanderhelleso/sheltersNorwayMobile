@@ -35,13 +35,11 @@ const Landing = () => {
 export default Landing;
 
 const StyledView = styled.View`
-	position: absolute;
-	top: 17.5%;
-	left: 0;
-	right: 0;
-	justify-content: center;
+	flex: 1;
+	justify-content: flex-end;
 	align-items: center;
 	text-align: center;
+	margin-top: 20px;
 `;
 
 const StyledSubHeading = styled.Text`
@@ -79,8 +77,7 @@ const StyledBorder = styled.View`
 `;
 
 const StyledAbout = styled.View`
-	position: absolute;
-	bottom: 25px;
+	flex: 0.2;
 	justify-content: center;
 	align-items: center;
 	text-align: center;

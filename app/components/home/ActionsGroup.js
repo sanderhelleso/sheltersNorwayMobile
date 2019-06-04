@@ -42,17 +42,14 @@ const ActionsGroup = () => {
 export default ActionsGroup;
 
 const StyledView = styled.View`
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
+	flex: 1.2;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 `;
 
 const StyledBtnCont = styled.View`
-	width: 65%;
+	min-width: 65%;
 	height: 50px;
 	margin: 15px;
 	border-radius: 4px;
