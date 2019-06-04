@@ -34,7 +34,7 @@ export default SearchResultListRow;
 
 const StyledView = styled.View`
 	flex: 1;
-	margin-bottom: 25px;
+	margin: 5px 0;
 	padding: 10px 0;
 	padding-bottom: ${(props) => (props.last ? 230 : 20)}px;
 `;

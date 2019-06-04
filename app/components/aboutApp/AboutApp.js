@@ -3,8 +3,10 @@ import { Linking, ScrollView } from 'react-native';
 import styled from 'styled-components';
 
 const AboutApp = () => {
-	const intro = `Offentlige tilfluktsrom i Norge er utviklet som et hjelpemiddel for norges befolkning til å bli mer bevist over de offentlige tilgjengelige tilfluktsromene som finnes i landet, samt hjelpe med å finne det nærmeste fra en hvilken som helst lokasjon.`;
-	const dataInfo = `Applikasjonen er utviklet av Semanta DA og benytter det offentlige datasetet som er levert av Direktoratet for samfunnssikkerhet og beredskap til å vise rom informasjon og lokasjon.`;
+	const intro =
+		'Offentlige tilfluktsrom i Norge er et hjelpemiddel som er utviklet for Norges befolkning. Hensikten er å øke bevisstheten rundt offentlig tilgjengelige tilfluktsrommene som er i landet, samt å finne nærmeste tilfluktsrom basert på brukers lokasjon.';
+	const dataInfo =
+		'Applikasjonen er utviklet av Semanta DA, og benytter det offentlige datasettet som er levert av Direktoratet for Samfunnssikkerhet og Beredskap for å vise informasjon om rom og lokasjon.';
 	const links = [
 		{
 			text: 'Semanta DA',
