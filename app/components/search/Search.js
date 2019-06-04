@@ -13,7 +13,6 @@ import { showSearchErrAlert, showSearchResultErrAlert } from '../../lib/alerts';
 import { addSearchToHistoryAction } from '../../store/actions/searchActions';
 
 class Search extends Component {
-	// error handlers
 	MIN_SEARCH_LEN = 2;
 	state = { loading: false };
 

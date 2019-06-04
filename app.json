@@ -22,7 +22,18 @@
 			"bundleIdentifier": "com.semanta.sheltersNorway"
 		},
 		"android": {
-			"package": "com.semanta.sheltersNorway"
+			"package": "com.semanta.sheltersNorway",
+			"permissions": [
+				"CAMERA",
+				"RECORD_AUDIO",
+				"READ_PHONE_STATE",
+				"READ_CONTACTS",
+				"ACCESS_FINE_LOCATION",
+				"ACCESS_COARSE_LOCATION",
+				"com.google.android.c2dm.permission.RECEIVE",
+				"com.android.launcher.permission.INSTALL_SHORTCUT",
+				"com.htc.launcher.permission.UPDATE_SHORTCUT"
+			]
 		}
 	}
 }

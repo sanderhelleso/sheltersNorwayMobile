@@ -44,10 +44,10 @@ export default SearchHandler;
 
 const StyledView = styled.View`
 	min-width: 75%;
-	flex: 1;
+	flex: 1.2;
 	align-items: center;
-
 	justify-content: center;
+	margin-bottom: 30px;
 `;
 
 const StyledInput = styled.TextInput`

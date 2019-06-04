@@ -39,7 +39,7 @@ const StyledView = styled.View`
 	justify-content: flex-end;
 	align-items: center;
 	text-align: center;
-	margin-top: 20px;
+	margin: 10px 0;
 `;
 
 const StyledSubHeading = styled.Text`
@@ -77,7 +77,7 @@ const StyledBorder = styled.View`
 `;
 
 const StyledAbout = styled.View`
-	flex: 0.2;
+	flex: 0.3;
 	justify-content: center;
 	align-items: center;
 	text-align: center;

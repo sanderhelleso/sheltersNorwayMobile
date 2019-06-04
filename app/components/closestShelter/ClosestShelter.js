@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Constants, Location, Permissions } from 'expo';
 import styled from 'styled-components';
 
 import { bindActionCreators } from 'redux';
@@ -17,16 +18,30 @@ class ClosestShelter extends Component {
 
 	state = {
 		loading: true,
-		error: false
+		error: ''
 	};
 
 	componentDidMount() {
 		this.getLocAndFind();
 	}
 
+	getPermission = async () => {
+		let { status } = await Permissions.askAsync(Permissions.LOCATION);
+		return status === 'granted';
+	};
+
 	// find and update store with users location
-	getLocAndFind = () => {
-		this.setState({ loading: true, error: false });
+	getLocAndFind = async () => {
+		this.setState({ loading: true, error: '' });
+
+		// ask for permission
+		const gotPermission = await this.getPermission();
+		if (!gotPermission) {
+			return this.setState({
+				loading: false,
+				error: 'Tilgang til lokasjon ble avslått.'
+			});
+		}
 
 		// attempt to get users location
 		navigator.geolocation.getCurrentPosition(
@@ -58,7 +73,11 @@ class ClosestShelter extends Component {
 			},
 			// if an error occured while attemping to fetch location,
 			// display a generic error message and suggest user to re-try
-			() => this.setState({ loading: false, error: true }),
+			() =>
+				this.setState({
+					loading: false,
+					error: 'Klarte ikke laste inn nødvending data for å utføre handlingen.'
+				}),
 			// configuration declared at top of component
 			this.GEO_LOC_CONFIG
 		);
@@ -82,7 +101,7 @@ class ClosestShelter extends Component {
 		}
 
 		if (this.state.error) {
-			return <ClosestShelterError retry={this.getLocAndFind} />;
+			return <ClosestShelterError retry={this.getLocAndFind} message={this.state.error} />;
 		}
 
 		return <Shelter shelter={this.props.closest.shelter} />;
