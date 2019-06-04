@@ -16,9 +16,9 @@ const Landing = () => {
 	return (
 		<Fragment>
 			<StyledView>
-				<StyledSubHeading>{staticText.subHeading1.toUpperCase()}</StyledSubHeading>
-				<StyledSubHeading>{staticText.subHeading2.toUpperCase()}</StyledSubHeading>
-				<StyledMainHeading>{staticText.mainHeading.toUpperCase()}</StyledMainHeading>
+				<StyledSubHeading adjustsFontSizeToFit>{staticText.subHeading1.toUpperCase()}</StyledSubHeading>
+				<StyledSubHeading adjustsFontSizeToFit>{staticText.subHeading2.toUpperCase()}</StyledSubHeading>
+				<StyledMainHeading adjustsFontSizeToFit>{staticText.mainHeading.toUpperCase()}</StyledMainHeading>
 				<StyledBorder />
 				<StyledSlogan>{staticText.slogan.toUpperCase()}</StyledSlogan>
 			</StyledView>
@@ -35,17 +35,15 @@ const Landing = () => {
 export default Landing;
 
 const StyledView = styled.View`
-	position: absolute;
-	top: 17.5%;
-	left: 0;
-	right: 0;
-	justify-content: center;
+	flex: 1;
+	justify-content: flex-end;
 	align-items: center;
 	text-align: center;
+	margin-top: 20px;
 `;
 
 const StyledSubHeading = styled.Text`
-	font-size: 20px;
+	font-size: 20;
 	color: #ffffff;
 	text-transform: uppercase;
 	letter-spacing: 4px;
@@ -53,7 +51,7 @@ const StyledSubHeading = styled.Text`
 `;
 
 const StyledMainHeading = styled.Text`
-	font-size: 60px;
+	font-size: 60;
 	color: #f50057;
 	text-transform: uppercase;
 	letter-spacing: 9px;
@@ -62,7 +60,7 @@ const StyledMainHeading = styled.Text`
 `;
 
 const StyledSlogan = styled.Text`
-	font-size: 14px;
+	font-size: 14;
 	color: #ffffff;
 	font-weight: 100;
 	text-transform: uppercase;
@@ -79,8 +77,7 @@ const StyledBorder = styled.View`
 `;
 
 const StyledAbout = styled.View`
-	position: absolute;
-	bottom: 25px;
+	flex: 0.2;
 	justify-content: center;
 	align-items: center;
 	text-align: center;

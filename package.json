@@ -4,7 +4,8 @@
 		"start": "expo start",
 		"android": "expo start --android",
 		"ios": "expo start --ios",
-		"eject": "expo eject"
+		"eject": "expo eject",
+		"bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
 	},
 	"dependencies": {
 		"axios": "^0.18.0",

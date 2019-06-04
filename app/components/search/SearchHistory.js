@@ -17,7 +17,7 @@ const SearchHistory = ({ searchHistory }) => {
 
 	return (
 		<StyledView style={bottomBorder}>
-			<StyledHeading>DIN SØKEHISTORIE</StyledHeading>
+			<StyledHeading adjustsFontSizeToFit>DIN SØKEHISTORIE</StyledHeading>
 			<StyledHistoryView>{renderSearchHistory()}</StyledHistoryView>
 		</StyledView>
 	);
@@ -31,11 +31,10 @@ export default connect(mapStateToProps, null)(SearchHistory);
 
 const StyledView = styled.View`
 	min-width: 100%;
-	flex: 2.35;
+	flex: 1;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin-bottom: 40px;
 `;
 
 const StyledPlaceholder = styled.Text`
@@ -46,7 +45,7 @@ const StyledPlaceholder = styled.Text`
 
 const StyledHeading = styled.Text`
 	color: #4f4f4f;
-	font-size: 26.5px;
+	font-size: 26.5;
 	font-weight: 800;
 	letter-spacing: 2px;
 	margin-bottom: 10px;

@@ -6,7 +6,7 @@ import SearchResultList from './SearchResultList';
 const SearchResult = ({ result, keywords }) => {
 	return (
 		<StyledView>
-			<StyledResultCount>{result.length}</StyledResultCount>
+			<StyledResultCount adjustsFontSizeToFit>{result.length}</StyledResultCount>
 			<StyledKeywords>
 				tilfluktsrom funnet for <StyledKeywordsStrong>{keywords}</StyledKeywordsStrong>
 			</StyledKeywords>
@@ -35,6 +35,6 @@ const StyledKeywordsStrong = styled.Text`
 `;
 
 const StyledResultCount = styled.Text`
-	font-size: 60px;
+	font-size: 50;
 	font-weight: 800;
 `;
