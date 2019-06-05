@@ -35,7 +35,7 @@
 
 ## Webversion
 
-<h5>https://offentligetilfluktsrom.no/</h5>
+<a>https://offentligetilfluktsrom.no/</a>
 
 ## Dataset
 
