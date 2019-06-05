@@ -6,14 +6,14 @@
 ## Screenshots
 
 <p float="left">
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/6.jpg" alt="app gif" width=270>
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/5.jpg" alt="app gif" width=270>
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/4.jpg" alt="app gif" width=270>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/6.jpg" alt="app gif" width=270 height=505>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/5.jpg" alt="app gif" width=270 height=505>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/4.jpg" alt="app gif" width=270 height=505>
   <br>
   <br>
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/3.jpg" alt="app gif" width=270>
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/2.jpg" alt="app gif" width=270>
-  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/1.jpg" alt="app gif" width=270>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/3.jpg" alt="app gif" width=270 height=505>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/2.jpg" alt="app gif" width=270 height=505>
+  <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/1.jpg" alt="app gif" width=270 height=505>
 </p>
 <br>
 
