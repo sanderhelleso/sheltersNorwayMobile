@@ -1,8 +1,7 @@
 # sheltersNorwayMobile
 
 <p>💅 Mobile application that displays public bombshelters located around Norway. Each shelter contains data about location, picture, google maps chart, name, available spots, year and much more.</p>
-<p>This application is a mobile makeover of the <a href="https://github.com/sanderhelleso/sheltersNorway">web version</a></p>
-<br>
+<p>This application is a mobile makeover of the <a href="https://github.com/sanderhelleso/sheltersNorway">web version</a>.</p>
 
 ## Screenshots
 
@@ -10,6 +9,7 @@
   <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/6.jpg" alt="app gif" width=270>
   <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/5.jpg" alt="app gif" width=270>
   <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/4.jpg" alt="app gif" width=270>
+  <br>
   <br>
   <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/3.jpg" alt="app gif" width=270>
   <img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/2.jpg" alt="app gif" width=270>
