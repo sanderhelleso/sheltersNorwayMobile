@@ -19,6 +19,10 @@ const AboutApp = () => {
 		{
 			text: 'Direktoratet for samfunnssikkerhet og beredskap',
 			url: 'https://www.dsb.no/'
+		},
+		{
+			text: 'Personvern',
+			url: 'https://offentligetilfluktsrom.no/personvern'
 		}
 	];
 
