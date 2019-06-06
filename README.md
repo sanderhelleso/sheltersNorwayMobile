@@ -4,7 +4,7 @@
 <p>This application is a mobile makeover of the <a href="https://github.com/sanderhelleso/sheltersNorway">web version</a>.It trumps the web version in speed, functionality and UX and is recommended as a companion to the webversion if internet is not accesible.</p>
 
 ## Get it for Android
-<a href="https://play.google.com/store/apps/details?id=com.semanta.sheltersNorway"><img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/playstore.png" alt="play store" width=100 height=30/></a>
+<a href="https://play.google.com/store/apps/details?id=com.semanta.sheltersNorway"><img src="https://github.com/sanderhelleso/sheltersNorwayMobile/blob/master/github/playstore.png" alt="play store" width=120 height=50/></a>
 
 ## Screenshots
 
