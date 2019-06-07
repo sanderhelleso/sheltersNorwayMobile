@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, TextInput } from 'react-native';
 
 import {
 	setCustomTextInput,
@@ -18,6 +18,8 @@ const customTextInputProps = {
 		backgroundColor: 'white'
 	}
 };
+
+TextInput.defaultProps.selectionColor = '#f50057';
 
 // Setting default styles for all Text components.
 const customTextProps = {
