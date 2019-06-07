@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, TouchableHighlight } from 'react-native';
 import styled from 'styled-components';
 import { MapView } from 'expo';
-
 import ShelterInfo from './ShelterInfo';
 import FloatingActionButton from '../sharable/FloatingActionButton';
 
@@ -74,7 +73,17 @@ class Shelter extends Component {
 					title={this.props.shelter.properties.adresse}
 					description={this.props.shelter.properties.kommune}
 					onPress={(e) => this.zoomMap(e)}
-				/>
+					onCalloutPress={this.setDisplay}
+				>
+					<MapView.Callout tooltip>
+						<TouchableHighlight>
+							<StyledMarkerView>
+								<StyledMarkerTitle>{this.props.shelter.properties.adresse}</StyledMarkerTitle>
+								<StyledMarkerDesc>{this.props.shelter.properties.kommune}</StyledMarkerDesc>
+							</StyledMarkerView>
+						</TouchableHighlight>
+					</MapView.Callout>
+				</MapView.Marker>
 			</MapView>
 		);
 	};
@@ -101,6 +110,23 @@ const StyledView = styled.View`
 	height: ${Dimensions.get('window').height};
 	width: ${Dimensions.get('window').width};
 	flex: 1;
+`;
+
+const StyledMarkerView = styled.View`
+	background-color: #eeeeee;
+	padding: 10px;
+	border-radius: 6px;
+	border: 1px solid #dddddd;
+`;
+
+const StyledMarkerTitle = styled.Text`
+	font-size: 14px;
+	font-weight: 600;
+`;
+
+const StyledMarkerDesc = styled.Text`
+	font-size: 12px;
+	color: #9e9e9e;
 `;
 
 export default Shelter;

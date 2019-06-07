@@ -25,7 +25,6 @@ class ShelterMap extends Component {
 	}
 
 	seeDetails = (shelter) => {
-		console.log(123);
 		navigationService.navigate('Shelter', { shelter });
 	};
 
