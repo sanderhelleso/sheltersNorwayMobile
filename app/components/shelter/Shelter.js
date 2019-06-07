@@ -74,16 +74,7 @@ class Shelter extends Component {
 					description={this.props.shelter.properties.kommune}
 					onPress={(e) => this.zoomMap(e)}
 					onCalloutPress={this.setDisplay}
-				>
-					<MapView.Callout tooltip>
-						<TouchableHighlight>
-							<StyledMarkerView>
-								<StyledMarkerTitle>{this.props.shelter.properties.adresse}</StyledMarkerTitle>
-								<StyledMarkerDesc>{this.props.shelter.properties.kommune}</StyledMarkerDesc>
-							</StyledMarkerView>
-						</TouchableHighlight>
-					</MapView.Callout>
-				</MapView.Marker>
+				/>
 			</MapView>
 		);
 	};

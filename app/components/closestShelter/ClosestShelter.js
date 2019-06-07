@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateCLientLocationAction, setClosestShelterAction } from '../../store/actions/closestActions';
 
-import ClosestShelterLoader from './ClosestShelterLoader';
+import Loader from '../sharable/Loader';
 import ClosestShelterError from './ClosestShelterError';
 
 import didLocationChange from '../../lib/didLocationChange';
@@ -97,7 +97,7 @@ class ClosestShelter extends Component {
 
 	renderClosestShelter = () => {
 		if (this.state.loading) {
-			return <ClosestShelterLoader loading={this.state.loading} message="Søker..." />;
+			return <Loader loading={this.state.loading} message="Søker..." />;
 		}
 
 		if (this.state.error) {
