@@ -64,7 +64,7 @@ class SearchHandler extends Component {
 					selectionColor={'#f50057'}
 					onChangeText={this.handleChangeText}
 					value={this.state.keywords}
-					placeholder="SØK BY, FYLKE, KOMMUNE..."
+					placeholder="Søk by, kommune..."
 					selectionColor="rgba(245, 0, 87, 0.5)"
 					tintColor="rgba(245, 0, 87, 0.2)"
 				/>
@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
 
 const StyledInput = styled.TextInput`
 	min-height: 60px;
+	min-width: 75%;
+	max-width: 75%;
 	font-size: 20px;
 	color: #f50057;
 	text-transform: uppercase;
