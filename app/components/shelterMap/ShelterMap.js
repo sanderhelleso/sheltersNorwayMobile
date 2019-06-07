@@ -84,23 +84,6 @@ const mapStyles = StyleSheet.create({
 	width: Dimensions.get('window').width
 });
 
-const StyledMarkerView = styled.View`
-	background-color: #eeeeee;
-	padding: 10px;
-	border-radius: 6px;
-	border: 1px solid #dddddd;
-`;
-
-const StyledMarkerTitle = styled.Text`
-	font-size: 14px;
-	font-weight: 600;
-`;
-
-const StyledMarkerDesc = styled.Text`
-	font-size: 12px;
-	color: #9e9e9e;
-`;
-
 const StyledLoader = styled.View`
 	position: absolute;
 	top: 0;

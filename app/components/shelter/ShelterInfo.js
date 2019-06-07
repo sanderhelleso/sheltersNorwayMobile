@@ -1,27 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Animated, View } from 'react-native';
 import styled from 'styled-components';
-
 import capitalizeString from '../../lib/capitalizeString';
-
 import ShelterInfoList from './ShelterInfoList';
 
-const ShelterInfo = ({ info }) => {
-	const { adresse, kommune, distriktsnavn } = info;
+class ShelterInfo extends Component {
+	state = { opacity: new Animated.Value(0) };
 
-	const buildDescription = () => {
+	componentDidMount() {
+		Animated.timing(this.state.opacity, {
+			toValue: 1,
+			duration: 500,
+			useNativeDriver: true
+		}).start();
+	}
+
+	buildDescription = () => {
+		const { adresse, kommune } = this.props.info;
 		return `${adresse}, ${capitalizeString(kommune)}`;
 	};
 
-	return (
-		<StyledView>
-			<StyledHeading adjustsFontSizeToFit>INFORMASJON</StyledHeading>
-			<StyledDescription>{buildDescription()}</StyledDescription>
-			<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
-				<ShelterInfoList info={info} />
-			</StyledListCont>
-		</StyledView>
-	);
-};
+	animationStyle = () => {
+		return [
+			{
+				opacity: this.state.opacity
+			},
+			{ flex: 1, padding: 30 }
+		];
+	};
+
+	render() {
+		return (
+			<Animated.View style={this.animationStyle()}>
+				<StyledHeading adjustsFontSizeToFit>INFORMASJON</StyledHeading>
+				<StyledDescription>{this.buildDescription()}</StyledDescription>
+				<StyledListCont style={topBorder} showsVerticalScrollIndicator={false}>
+					<ShelterInfoList info={this.props.info} />
+				</StyledListCont>
+			</Animated.View>
+		);
+	}
+}
 
 const StyledView = styled.View`
 	flex: 1;
