@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, TouchableHighlight } from 'react-native';
 import styled from 'styled-components';
 import { MapView } from 'expo';
-
 import ShelterInfo from './ShelterInfo';
 import FloatingActionButton from '../sharable/FloatingActionButton';
 
@@ -74,6 +73,7 @@ class Shelter extends Component {
 					title={this.props.shelter.properties.adresse}
 					description={this.props.shelter.properties.kommune}
 					onPress={(e) => this.zoomMap(e)}
+					onCalloutPress={this.setDisplay}
 				/>
 			</MapView>
 		);
