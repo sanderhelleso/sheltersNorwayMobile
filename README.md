@@ -29,7 +29,7 @@
   <li>Interactiv map for all shelters, easy to learn and discover</li>
   <li>Own details page for every shelter</li>
   <li>Quicksearch by storing previous search and caching them</li>
-  <li>Works offline!</li>
+  <li>All but the map tiles, works offline!</li>
 </ul>
 
 ## Why
